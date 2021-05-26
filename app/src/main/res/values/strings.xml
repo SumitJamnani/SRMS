@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name" style="color:FFF39100;">Student Results Management System</string>
+    <string name="forgot_password"><a style="text-decoration:none;" href="http://www.google.com">Forgot Password?</a></string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="role_prompt">Choose A Role</string>
+    <string-array name="Role">
+        <item>--Select role--</item>
+        <item>Director</item>
+        <item>Faculty</item>
+        <item>Student</item>
+    </string-array>
+
+    <string-array name="Sem">
+        <item style="text-align:center;">-- Select Semester --</item>
+        <item>MCA Sem-1</item>
+        <item>MCA Sem-2</item>
+        <item>MCA Sem-3</item>
+        <item>MCA Sem-4</item>
+    </string-array>
+
+
+    <string-array name="Subject">
+        <item style="text-align:center;">-- Select Subject --</item>
+        <item>Python</item>
+        <item>Android</item>
+        <item>Computer Networking</item>
+        <item>Software Testing</item>
+        <item>Java Web Technology</item>
+    </string-array>
+
+
+    <string-array name="Exam">
+        <item style="text-align:center;">-- Select Exam --</item>
+        <item>Python unit-1-unit-4</item>
+        <item>Android unit-1-unit-4</item>
+        <item>Computer Networking unit-1-unit-4</item>
+        <item>Software Testing unit-1-unit-4</item>
+        <item>Java Web Technology unit-1-unit-4</item>
+    </string-array>
+</resources>

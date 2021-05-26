@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentUpdateProfile"
+    android:background="@drawable/bg2_blur">
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="174dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/username" />
+
+    <LinearLayout
+        android:layout_width="334dp"
+        android:layout_height="510dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/rounded_border_registration"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/txt_en"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enrollment Number"
+            android:layout_marginTop="30dp"
+            android:inputType="textPersonName"
+            android:textColorHint="#090808" />
+
+        <EditText
+            android:id="@+id/txt_class"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Class"
+            android:inputType="textPersonName"
+            android:textColorHint="#0E0E0E" />
+
+        <EditText
+            android:id="@+id/txt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Name"
+            android:layout_marginTop="30dp"
+            android:inputType="textPersonName"
+            android:textColorHint="#0B0B0B" />
+
+        <EditText
+            android:id="@+id/txt_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password"
+            android:layout_marginTop="30dp"
+            android:inputType="textPassword"
+            android:textColorHint="#070707"/>
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:hint="Update Profile"
+            android:textColorHint="#0B0B0B" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
