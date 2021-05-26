@@ -7,16 +7,6 @@
     android:background="@drawable/bg2_blur"
     tools:context=".StudentsResults">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="238dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/results_text" />
-
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="334dp"
