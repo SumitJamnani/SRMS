@@ -18,6 +18,13 @@
         <item>MCA Sem-4</item>
     </string-array>
 
+    <string-array name="Div">
+        <item style="text-align:center;">-- Division --</item>
+        <item>Div-A</item>
+        <item>Div-B</item>
+
+    </string-array>
+
 
     <string-array name="Subject">
         <item style="text-align:center;">-- Select Subject --</item>

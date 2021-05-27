@@ -34,7 +34,7 @@
             android:id="@+id/spinner5"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:layout_marginTop="20dp" />
+             />
 
         <EditText
             android:id="@+id/editTextNumber"
@@ -80,7 +80,12 @@
             android:id="@+id/spinner6"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:layout_marginTop="30dp" />
+             />
+        <Spinner
+            android:id="@+id/spinner7"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            />
 
         <Button
             android:id="@+id/button2"

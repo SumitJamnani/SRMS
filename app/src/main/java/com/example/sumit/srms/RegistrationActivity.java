@@ -23,6 +23,11 @@ public class RegistrationActivity extends AppCompatActivity {
         myAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner1.setAdapter(myAdapter1);
 
+        Spinner mySpinner2 = (Spinner) findViewById(R.id.spinner7);
+        ArrayAdapter<String> myAdapter2 = new ArrayAdapter<>(RegistrationActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Div));
+        myAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner2.setAdapter(myAdapter2);
+
 
     }
     }
