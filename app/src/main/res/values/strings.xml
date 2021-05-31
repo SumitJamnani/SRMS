@@ -2,7 +2,8 @@
     <string name="app_name" style="color:FFF39100;">Student Results Management System</string>
     <string name="forgot_password"><a style="text-decoration:none;" href="http://www.google.com">Forgot Password?</a></string>
     <string name="title_activity_registration">RegistrationActivity</string>
-    <string name="role_prompt">Choose A Role</string>
+
+
     <string-array name="Role">
         <item>--Select role--</item>
         <item>Director</item>

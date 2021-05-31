@@ -35,9 +35,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Enrollment Number"
+            android:hint="205350694034"
             android:layout_marginTop="30dp"
-            android:inputType="textPersonName"
+            android:inputType="none"
+            android:textIsSelectable="true"
+            android:focusable="false"
             android:textColorHint="#090808" />
 
         <EditText
@@ -46,8 +48,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:hint="Class"
-            android:inputType="textPersonName"
+            android:hint="MCA Sem 2"
+            android:inputType="none"
+            android:textIsSelectable="true"
+            android:focusable="false"
             android:textColorHint="#0E0E0E" />
 
         <EditText
@@ -71,12 +75,28 @@
             android:textColorHint="#070707"/>
 
         <Button
+            android:id="@+id/btn_img_file"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Upload Image"
+            android:layout_marginTop="30dp"
+            android:background="#d429cb" />
+
+        <TextView
+            android:id="@+id/filename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+        
+        <Button
             android:id="@+id/btn"
             android:layout_width="131dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:hint="Update Profile"
-            android:textColorHint="#0B0B0B" />
+            android:textColorHint="#0B0B0B"
+            android:background="@drawable/rounded_button"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
