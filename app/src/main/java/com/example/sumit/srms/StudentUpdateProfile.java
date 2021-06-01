@@ -33,6 +33,7 @@ public class StudentUpdateProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_update_profile);
+
         Button upload_file = findViewById(R.id.btn_img_file);
         upload_file.setOnClickListener(new View.OnClickListener() {
             @Override

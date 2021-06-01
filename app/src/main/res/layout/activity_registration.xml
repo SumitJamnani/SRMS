@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ImgUser"
         android:layout_width="174dp"
         android:layout_height="107dp"
         android:layout_marginTop="4dp"
@@ -37,7 +37,7 @@
              />
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/txt_enrollment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -47,7 +47,7 @@
             android:textColorHint="#0D0C0C" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/txt_UserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -67,7 +67,7 @@
             android:textColorHint="#090808" />
 
         <EditText
-            android:id="@+id/TextPassword"
+            android:id="@+id/txt_Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -88,7 +88,7 @@
             />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/SignUp"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

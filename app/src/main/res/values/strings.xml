@@ -5,24 +5,53 @@
 
 
     <string-array name="Role">
-        <item>--Select role--</item>
+        <item>--Select Role--</item>
         <item>Director</item>
         <item>Faculty</item>
         <item>Student</item>
     </string-array>
 
+    <string-array name="Course">
+        <item>--Select Course--</item>
+        <item>MCA</item>
+        <item>BCA</item>
+        <item>MBA</item>
+    </string-array>
+
+    <string-array name="Director">
+        <item>--Select Director--</item>
+        <item>Prof. Hardik Soni</item>
+        <item>Prof. Harish Morwani</item>
+        <item>Prof. Kruti Jani</item>
+    </string-array>
+
+    <string-array name="Faculty">
+        <item>--Select Faculty--</item>
+        <item>Prof. Hardik Soni</item>
+        <item>Prof. HArish Morwani</item>
+        <item>Prof. Kruti Jani</item>
+    </string-array>
+
     <string-array name="Sem">
         <item style="text-align:center;">-- Select Semester --</item>
-        <item>MCA Sem-1</item>
-        <item>MCA Sem-2</item>
-        <item>MCA Sem-3</item>
-        <item>MCA Sem-4</item>
+        <item>Semester 1</item>
+        <item>Semester 2</item>
+        <item>Semester 3</item>
+        <item>Semester 4</item>
+    </string-array>
+
+    <string-array name="New_Sem">
+        <item style="text-align:center;">-- Select New Semester --</item>
+        <item>Semester 1</item>
+        <item>Semester 2</item>
+        <item>Semester 3</item>
+        <item>Semester 4</item>
     </string-array>
 
     <string-array name="Div">
         <item style="text-align:center;">-- Division --</item>
-        <item>Div-A</item>
-        <item>Div-B</item>
+        <item>Division A</item>
+        <item>Division B</item>
 
     </string-array>
 
@@ -39,10 +68,11 @@
 
     <string-array name="Exam">
         <item style="text-align:center;">-- Select Exam --</item>
-        <item>Python unit-1-unit-4</item>
-        <item>Android unit-1-unit-4</item>
-        <item>Computer Networking unit-1-unit-4</item>
-        <item>Software Testing unit-1-unit-4</item>
-        <item>Java Web Technology unit-1-unit-4</item>
+        <item>Python Unit-1</item>
+        <item>Android Unit-1</item>
+        <item>Computer Networking Unit-1</item>
+        <item>Software Testing Unit-1</item>
+        <item>Java Web Technology Unit-1</item>
     </string-array>
+    <string name="title_activity_reports">Reports</string>
 </resources>

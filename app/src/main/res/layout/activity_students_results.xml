@@ -13,15 +13,15 @@
         android:src="@drawable/cpi_logo"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"></ImageView>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="334dp"
         android:layout_height="510dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="116dp"
         android:background="@drawable/rounded_border_registration"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:text="Get Result" />
+            android:text="Get Result"
+            android:background="@drawable/rounded_button"/>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -55,7 +56,6 @@
             android:layout_marginTop="20dp">
 
             <TableRow>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,17 +79,17 @@
                     android:layout_weight="1"
                     android:text="Total Marks"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="Passing Marks"
+                    android:textStyle="bold" />
             </TableRow>
+
         </TableLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

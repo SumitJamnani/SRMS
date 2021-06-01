@@ -39,8 +39,7 @@
             android:layout_marginTop="30dp"
             android:inputType="none"
             android:textIsSelectable="true"
-            android:focusable="false"
-            android:textColorHint="#090808" />
+            android:focusable="false" />
 
         <EditText
             android:id="@+id/txt_class"
@@ -51,8 +50,7 @@
             android:hint="MCA Sem 2"
             android:inputType="none"
             android:textIsSelectable="true"
-            android:focusable="false"
-            android:textColorHint="#0E0E0E" />
+            android:focusable="false" />
 
         <EditText
             android:id="@+id/txt_name"
@@ -61,8 +59,7 @@
             android:ems="10"
             android:hint="Enter Name"
             android:layout_marginTop="30dp"
-            android:inputType="textPersonName"
-            android:textColorHint="#0B0B0B" />
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/txt_pwd"
@@ -71,26 +68,26 @@
             android:ems="10"
             android:hint="Password"
             android:layout_marginTop="30dp"
-            android:inputType="textPassword"
-            android:textColorHint="#070707"/>
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/btn_img_file"
-            android:layout_width="131dp"
+            android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Upload Image"
             android:layout_marginTop="30dp"
-            android:background="#d429cb" />
+            android:background="#d429cb"
+            android:drawableLeft="@drawable/ic_add_a_photo_black"
+            android:text="Upload Image" />
 
         <TextView
             android:id="@+id/filename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
-        
+
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/btn_UpdateProfile"
             android:layout_width="131dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"

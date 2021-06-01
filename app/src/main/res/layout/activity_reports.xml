@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2_blur"
+    tools:context=".Reports">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_Reports"
+        android:layout_width="334dp"
+        android:layout_height="441dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/rounded_border_registration"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Spinner
+            android:id="@+id/spinner_Course"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="30dp" />
+
+        <Spinner
+            android:id="@+id/spinner_Semester"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="30dp" />
+
+        <Spinner
+            android:id="@+id/spinner_Faculty"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="30dp" />
+
+        <Spinner
+            android:id="@+id/spinner_Exam"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="30dp" />
+
+        <Button
+            android:id="@+id/btn_Report"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rounded_button"
+            android:text="View Report" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
