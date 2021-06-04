@@ -12,8 +12,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,10 +26,13 @@ import java.io.File;
 
 public class StudentUpdateProfile extends AppCompatActivity {
 
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+
     private static final int PERMISSION_REQUEST_CODE = 1;
     private static final int REQUEST_GALLERY = 200;
-    String file_path = null;
 
+    String file_path = null;
     TextView file_name;
 
     @Override
@@ -34,6 +40,17 @@ public class StudentUpdateProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_update_profile);
 
+        // Side Drawer Code
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.student_drawer);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //End Side Drawer Code
+
+
+        // File Picker Code
         Button upload_file = findViewById(R.id.btn_img_file);
         upload_file.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +77,21 @@ public class StudentUpdateProfile extends AppCompatActivity {
         );
 
         file_name = findViewById(R.id.filename);
+        // File Picker Code End
     }
 
+    //Side drawer open close related method
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(actionBarDrawerToggle.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    //End Side drawer open close related method
+
+    // File Picker RElated Methods
     private void filepicker()
     {
         Toast.makeText(StudentUpdateProfile.this, "File Picker Called!!", Toast.LENGTH_SHORT).show();
@@ -145,4 +175,6 @@ public class StudentUpdateProfile extends AppCompatActivity {
             return  cursor.getString(id);
         }
     }
+    // File Picker RElated Methods End
+
 }

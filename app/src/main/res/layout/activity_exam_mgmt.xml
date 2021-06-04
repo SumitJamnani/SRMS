@@ -9,16 +9,16 @@
     android:id="@+id/admin_drawer">
 
     <android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg2_blur"
-    tools:context=".ManulResult">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ExamMgmt"
+        android:background="@drawable/bg2_blur">
 
         <LinearLayout
-            android:id="@+id/linearLayout_ManualResult"
+            android:id="@+id/linearLayout_SubjectMgmt"
             android:layout_width="334dp"
-            android:layout_height="462dp"
-            android:layout_marginTop="44dp"
+            android:layout_height="492dp"
+            android:layout_marginTop="52dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,46 +27,57 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Spinner
-                android:id="@+id/spinner_Course"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp"/>
-
-            <Spinner
-                android:id="@+id/spinner_Semester"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
-
-            <Spinner
-                android:id="@+id/spinner_Faculty"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
-
-            <Spinner
-                android:id="@+id/spinner_Exam"
+                android:id="@+id/spinner_Subject"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginTop="30dp" />
 
             <EditText
-                android:id="@+id/txt_enrollment"
+                android:id="@+id/txt_ExamName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint="Enter Enrollment Number" />
+                android:layout_marginTop="30dp"
+                android:ems="10"
+                android:hint="Enter Exam Name : Python Unit 1" />
+
+            <EditText
+                android:id="@+id/txt_TotalMarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:ems="10"
+                android:hint="Enter Total Marks : 70"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txt_PassingMarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:ems="10"
+                android:hint="Enter Passing Marks : 35"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txt_ExamDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:ems="10"
+                android:inputType="date"
+                android:hint="Enter Exam Date : 01/10/2021" />
 
             <Button
-                android:id="@+id/btn_AddResult"
-                android:layout_width="140dp"
+                android:id="@+id/btn_DeclareExam"
+                android:layout_width="147dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/rounded_button"
-                android:text="Add Result" />
+                android:text="Declare Exam" />
 
         </LinearLayout>
+
 
     </android.support.constraint.ConstraintLayout>
 

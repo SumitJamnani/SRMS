@@ -2,6 +2,8 @@
     <string name="app_name" style="color:FFF39100;">Student Results Management System</string>
     <string name="forgot_password"><a style="text-decoration:none;" href="http://www.google.com">Forgot Password?</a></string>
     <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 
     <string-array name="Role">

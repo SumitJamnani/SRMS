@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/menu_home"
+        android:checkableBehavior="single">
+
+        <item   android:id="@+id/home"
+            android:title="Home"
+            android:icon="@drawable/ic_home" />
+    </group>
+
+
+    <group
+        android:id="@+id/menu_master_pages"
+        android:checkableBehavior="single">
+
+        <item   android:id="@+id/master_pages"
+            android:title="Master Pages"
+            android:icon="@drawable/ic_laptop" />
+
+        <item   android:id="@+id/course"
+            android:title="Course" />
+
+        <item   android:id="@+id/semester"
+            android:title="Semester" />
+
+        <item   android:id="@+id/division"
+            android:title="Division" />
+
+        <item   android:id="@+id/subject"
+            android:title="Subject" />
+
+        <item   android:id="@+id/exam"
+            android:title="Declare Exam" />
+    </group>
+
+
+    <item   android:id="@+id/manage_users"
+        android:title="Manage Users"
+        android:icon="@drawable/ic_people" />
+
+    <item   android:id="@+id/manage_results"
+        android:title="Manage Results"
+        android:icon="@drawable/ic_book" />
+
+    <item   android:id="@+id/reports"
+        android:title="Reports"
+        android:icon="@drawable/ic_pie_chart" />
+
+    <item   android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout" />
+
+
+</menu>
