@@ -76,7 +76,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/rounded_button"
-                android:text="Allocate subject " />
+                android:text="Allocate Subject " />
 
         </LinearLayout>
 
