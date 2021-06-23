@@ -14,6 +14,24 @@
         android:background="@drawable/bg2_blur"
         tools:context=".FacultyMgmt">
 
+        <TextView
+            android:id="@+id/title_faculty_mgmt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Faculty Management"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.014" />
 
         <LinearLayout
             android:id="@+id/linearLayout_FacultyMgmt"
@@ -58,7 +76,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/rounded_button"
-                android:text="Bind Faculty" />
+                android:text="Allocate subject " />
 
         </LinearLayout>
 

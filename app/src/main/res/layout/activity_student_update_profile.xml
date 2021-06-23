@@ -8,9 +8,7 @@
     android:layout_height="match_parent"
     android:id="@+id/student_drawer">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".StudentUpdateProfile"
@@ -85,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:background="#d429cb"
+                android:background="#9400BCD4"
                 android:drawableLeft="@drawable/ic_add_a_photo_black"
                 android:text="Upload Image" />
 
