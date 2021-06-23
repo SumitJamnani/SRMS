@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="#3078dc"
-                android:text="XL File Should Contain These Fields : (Enrollment Number, Email, Name, Gender, Semester, Division)" />
+                    android:text="XL File Should Contain These Fields : (Enrollment Number, Email, Name, Gender, Semester, Division)" />
 
             <Button
                 android:id="@+id/btn_AddUser"
