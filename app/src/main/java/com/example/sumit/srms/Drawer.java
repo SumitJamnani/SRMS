@@ -30,6 +30,12 @@ public class Drawer extends AppCompatActivity implements NavigationView.OnNaviga
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        if(savedInstanceState == null)
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Home()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
     }
 
     @Override
@@ -48,6 +54,10 @@ public class Drawer extends AppCompatActivity implements NavigationView.OnNaviga
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId())
         {
+            case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Home()).commit();
+                break;
+
             case R.id.nav_course:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CourseDemo()).commit();
                 break;
