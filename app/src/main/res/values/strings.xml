@@ -6,6 +6,8 @@
     <string name="close">Close</string>
 
 
+    <string name="title_activity_reports">Reports</string>
+
     <string-array name="Role">
         <item>--Select Role--</item>
         <item>Director</item>
@@ -50,6 +52,7 @@
         <item>Semester 4</item>
     </string-array>
 
+
     <string-array name="Div">
         <item style="text-align:center;">-- Division --</item>
         <item>Division A</item>
@@ -66,8 +69,6 @@
         <item>Software Testing</item>
         <item>Java Web Technology</item>
     </string-array>
-
-
     <string-array name="Exam">
         <item style="text-align:center;">-- Select Exam --</item>
         <item>Python Unit-1</item>
@@ -76,5 +77,4 @@
         <item>Software Testing Unit-1</item>
         <item>Java Web Technology Unit-1</item>
     </string-array>
-    <string name="title_activity_reports">Reports</string>
 </resources>
