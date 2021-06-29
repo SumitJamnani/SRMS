@@ -2,22 +2,24 @@ package com.example.sumit.srms;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -26,7 +28,7 @@ import android.widget.Toast;
 
 import java.io.File;
 
-public class ImportResults extends AppCompatActivity {
+public class ImportResults extends Fragment {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -36,87 +38,66 @@ public class ImportResults extends AppCompatActivity {
     String file_path = null;
     TextView file_name;
 
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_import_results);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_import_results, container,false);
 
-        //Side Drawer Code
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.admin_drawer);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //End Side Drawer Code
 
         //Spinner Code
-        Spinner spinner_course = (Spinner) findViewById(R.id.spinner_Course);
-        ArrayAdapter<String> adapter_course =  new ArrayAdapter<>(ImportResults.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Course));
+        Spinner spinner_course = (Spinner) view.findViewById(R.id.spinner_Course);
+        ArrayAdapter<String> adapter_course =  new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Course));
         adapter_course.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_course.setAdapter(adapter_course);
 
-        Spinner spinner_semester = (Spinner) findViewById(R.id.spinner_Semester);
-        ArrayAdapter<String> adapter_semester =  new ArrayAdapter<>(ImportResults.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Sem));
+        Spinner spinner_semester = (Spinner) view.findViewById(R.id.spinner_Semester);
+        ArrayAdapter<String> adapter_semester =  new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Sem));
         adapter_semester.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_semester.setAdapter(adapter_semester);
 
-        Spinner spinner_faculty = (Spinner) findViewById(R.id.spinner_Faculty);
-        ArrayAdapter<String> adapter_faculty =  new ArrayAdapter<>(ImportResults.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Faculty));
+        Spinner spinner_faculty = (Spinner) view.findViewById(R.id.spinner_Faculty);
+        ArrayAdapter<String> adapter_faculty =  new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Faculty));
         adapter_faculty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_faculty.setAdapter(adapter_faculty);
 
-        Spinner spinner_exam = (Spinner) findViewById(R.id.spinner_Exam);
-        ArrayAdapter<String> adapter_exam =  new ArrayAdapter<>(ImportResults.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Exam));
+        Spinner spinner_exam = (Spinner) view.findViewById(R.id.spinner_Exam);
+        ArrayAdapter<String> adapter_exam =  new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Exam));
         adapter_exam.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_exam.setAdapter(adapter_exam);
         // Spinner Code End
 
         //File Upload Code
-        Button upload_file = findViewById(R.id.btn_AddResult);
+        Button upload_file = view.findViewById(R.id.btn_AddResult);
         upload_file.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                if(Build.VERSION.SDK_INT>=23)
-                {
-                    if(checkPermission())
-                    {
-                        filepicker();
-                    }
-                    else
-                        {
-                            requestPermission();
-                        }
-                }
-                else {
-                        filepicker(); }
-            }
-        }
+                                           @Override
+                                           public void onClick(View view)
+                                           {
+                                               if(Build.VERSION.SDK_INT>=23)
+                                               {
+                                                   if(checkPermission())
+                                                   {
+                                                       filepicker();
+                                                   }
+                                                   else
+                                                   {
+                                                       requestPermission();
+                                                   }
+                                               }
+                                               else {
+                                                   filepicker(); }
+                                           }
+                                       }
         );
 
-        file_name = findViewById(R.id.filename);
+        file_name = view.findViewById(R.id.filename);
         //File Upload Code End
-    }
 
-    //Side drawer open close related method
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(actionBarDrawerToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return view;
     }
-    //End Side drawer open close related method
-
 
     //File Upload Code Related method
     private void filepicker()
     {
-        Toast.makeText(ImportResults.this, "File Picker Called!!", Toast.LENGTH_SHORT).show();
-
         // Pick File
         Intent opengallery = new Intent(Intent.ACTION_GET_CONTENT);
         opengallery.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -127,19 +108,19 @@ public class ImportResults extends AppCompatActivity {
 
     private void requestPermission()
     {
-        if(ActivityCompat.shouldShowRequestPermissionRationale(ImportResults.this, Manifest.permission.READ_EXTERNAL_STORAGE))
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE))
         {
-            Toast.makeText(ImportResults.this, "Please Give Permission To Upload File", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getActivity(), "Please Give Permission To Upload File", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            ActivityCompat.requestPermissions(ImportResults.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
         }
     }
 
     private boolean checkPermission()
     {
-        int result = ContextCompat.checkSelfPermission(ImportResults.this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        int result = ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE);
         if(result == PackageManager.PERMISSION_GRANTED)
         {
             return  true;
@@ -158,23 +139,23 @@ public class ImportResults extends AppCompatActivity {
             case PERMISSION_REQUEST_CODE:
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
-                    Toast.makeText(ImportResults.this, "Permission Successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this.getActivity(), "Permission Successful", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    Toast.makeText(ImportResults.this, "Permission Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this.getActivity(), "Permission Failed", Toast.LENGTH_SHORT).show();
                 }
         }
 
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_GALLERY && resultCode == Activity.RESULT_OK)
         {
-            String filePath  = getRealPathFromUrl(data.getData(), ImportResults.this);
-            Toast.makeText(ImportResults.this, "Path : " + filePath, Toast.LENGTH_SHORT).show();
+            String filePath  = getRealPathFromUrl(data.getData(), this.getActivity());
+            Toast.makeText(this.getActivity(), "Path : " + filePath, Toast.LENGTH_SHORT).show();
 
             this.file_path = filePath;
             File file = new File(filePath);
@@ -197,5 +178,5 @@ public class ImportResults extends AppCompatActivity {
         }
     }
     //File Upload Related Methods End
-
 }
+

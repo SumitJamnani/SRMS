@@ -21,7 +21,7 @@
 
     <LinearLayout
         android:layout_width="334dp"
-        android:layout_height="510dp"
+        android:layout_height="520dp"
         android:layout_marginTop="92dp"
         android:background="@drawable/rounded_border_registration"
         android:orientation="vertical"
@@ -33,14 +33,15 @@
         <Spinner
             android:id="@+id/spinner5"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="15dp"
              />
 
         <EditText
             android:id="@+id/txt_enrollment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Enter Enrollment Number"
             android:inputType="number"
@@ -50,7 +51,7 @@
             android:id="@+id/txt_UserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Enter Name"
             android:inputType="textPersonName"
@@ -60,7 +61,7 @@
             android:id="@+id/txt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Enter Email"
             android:inputType="textEmailAddress"
@@ -70,7 +71,7 @@
             android:id="@+id/txt_Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Enter Password"
             android:inputType="textPassword"
@@ -80,11 +81,13 @@
             android:id="@+id/spinner6"
             android:layout_width="match_parent"
             android:layout_height="36dp"
+            android:layout_marginTop="20dp"
              />
         <Spinner
             android:id="@+id/spinner7"
             android:layout_width="match_parent"
             android:layout_height="36dp"
+            android:layout_marginTop="20dp"
             />
 
         <Button
@@ -95,7 +98,7 @@
             android:layout_marginTop="15dp"
 
             android:background="@drawable/rounded_button"
-            android:text="Sign up" />
+            android:text="Add User" />
 
 
     </LinearLayout>

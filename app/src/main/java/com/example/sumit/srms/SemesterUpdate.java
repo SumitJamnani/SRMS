@@ -1,59 +1,42 @@
 package com.example.sumit.srms;
 
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class SemesterUpdate extends AppCompatActivity {
-
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
-
+public class SemesterUpdate extends Fragment {
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_semester_update);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_semester_update, container,false);
 
-        //Side Drawer Code
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.admin_drawer);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //End Side Drawer Code
 
         //Spinner Code
-        Spinner spinner_course = (Spinner) findViewById(R.id.spinner_Course);
-        ArrayAdapter<String> adapter_course =  new ArrayAdapter<>(SemesterUpdate.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Course));
+        Spinner spinner_course = (Spinner) view.findViewById(R.id.spinner_Course);
+        ArrayAdapter<String> adapter_course =  new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Course));
         adapter_course.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_course.setAdapter(adapter_course);
 
-        Spinner spinner_semester = (Spinner) findViewById(R.id.spinner_Semester);
-        ArrayAdapter<String> adapter_semester =  new ArrayAdapter<>(SemesterUpdate.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Sem));
+        Spinner spinner_semester = (Spinner) view.findViewById(R.id.spinner_Semester);
+        ArrayAdapter<String> adapter_semester =  new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Sem));
         adapter_semester.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_semester.setAdapter(adapter_semester);
 
-        Spinner spinner_new_sem = (Spinner) findViewById(R.id.spinner_NewSemester);
-        ArrayAdapter<String> adapter_new_sem =  new ArrayAdapter<>(SemesterUpdate.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.New_Sem));
+        Spinner spinner_new_sem = (Spinner) view.findViewById(R.id.spinner_NewSemester);
+        ArrayAdapter<String> adapter_new_sem =  new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.New_Sem));
         adapter_new_sem.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_new_sem.setAdapter(adapter_new_sem);
         // Spinner Code End
-
+        return view;
     }
-
-    //Side drawer open close related method
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(actionBarDrawerToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    //End Side drawer open close related method
 }
+

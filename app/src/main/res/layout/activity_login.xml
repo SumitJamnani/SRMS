@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
-            android:drawableLeft="@drawable/ic_person"
+            android:drawableStart="@drawable/ic_person"
             android:ems="10"
             android:hint="Enter UserName "
             android:inputType="textPersonName" />
@@ -47,12 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
-            android:drawableLeft="@drawable/ic_lock"
+            android:drawableStart="@drawable/ic_lock"
             android:ems="10"
             android:hint="Enter Password"
             android:inputType="textPassword" />
 
-        <TextView
+<!--        <TextView
             android:id="@+id/forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             android:linksClickable="true"
             android:text="@string/forgot_password"
             android:textColor="#001286"
-            android:textColorLink="#001286"></TextView>
+            android:textColorLink="#001286"/> -->
 
         <Button
             android:id="@+id/SignIn"

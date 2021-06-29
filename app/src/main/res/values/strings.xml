@@ -8,8 +8,15 @@
 
     <string name="title_activity_reports">Reports</string>
 
+    <string-array name="Demo">
+        <item>--Select Demo--</item>
+        <item>Demo1</item>
+        <item>Demo2</item>
+        <item>Demo3</item>
+    </string-array>
+
     <string-array name="Role">
-        <item>--Select Role--</item>
+        <item style="text-align:center;">-- Select Role --</item>
         <item>Director</item>
         <item>Faculty</item>
         <item>Student</item>
@@ -54,7 +61,7 @@
 
 
     <string-array name="Div">
-        <item style="text-align:center;">-- Division --</item>
+        <item style="text-align:center;">-- Select Division --</item>
         <item>Division A</item>
         <item>Division B</item>
 

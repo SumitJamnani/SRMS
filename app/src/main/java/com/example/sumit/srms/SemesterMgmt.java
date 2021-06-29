@@ -1,49 +1,32 @@
 package com.example.sumit.srms;
 
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class SemesterMgmt extends AppCompatActivity {
-
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
-
+public class SemesterMgmt extends Fragment {
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_semester_mgmt);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_semester_mgmt, container,false);
 
-        //Side Drawer Code
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.admin_drawer);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //End Side Drawer Code
 
         //Spinner Code
-        Spinner spinner_course = (Spinner) findViewById(R.id.spinner_Course);
-        ArrayAdapter<String> adapter_course =  new ArrayAdapter<>(SemesterMgmt.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Course));
+        Spinner spinner_course = (Spinner) view.findViewById(R.id.spinner_Course);
+        ArrayAdapter<String> adapter_course =  new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.Course));
         adapter_course.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_course.setAdapter(adapter_course);
         // Spinner Code End
-
+        return view;
     }
-
-    //Side drawer open close related method
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(actionBarDrawerToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    //End Side drawer open close related method
 }
+

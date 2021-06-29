@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Drawer"
+    tools:context=".AdminDrawer"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -23,7 +23,7 @@
             android:elevation="4dp"/>
 
         <FrameLayout
-            android:id="@+id/fragment_container"
+            android:id="@+id/admin_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <!--app:popupTheme="@style/ThemeOverlay.AppCompact.Light"-->
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"
+        app:headerLayout="@layout/admin_navigation_header"
         app:menu="@menu/admin_navigation_menu" />
 
 </android.support.v4.widget.DrawerLayout>

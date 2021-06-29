@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item   android:id="@+id/home"
+    <item   android:id="@+id/student_nav_home"
         android:title="Home"
         android:icon="@drawable/ic_home"/>
 
-    <item   android:id="@+id/update_profile"
+    <item   android:id="@+id/student_nav_update_profile"
             android:title="Update Profile"
             android:icon="@drawable/ic_person"/>
 
-    <item   android:id="@+id/results"
+    <item   android:id="@+id/student_nav_results"
             android:title="Results"
             android:icon="@drawable/ic_book" />
 
-    <item   android:id="@+id/about_us"
+    <item   android:id="@+id/student_nav_about_us"
             android:title="About Us"
             android:icon="@drawable/ic_people" />
 
-    <item   android:id="@+id/logout"
+    <item   android:id="@+id/student_nav_logout"
             android:title="Logout"
             android:icon="@drawable/ic_logout" />
 </menu>

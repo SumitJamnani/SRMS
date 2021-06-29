@@ -1,111 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.DrawerLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/admin_drawer">
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ExamMgmt"
-        android:background="@drawable/bg2_blur">
+    tools:context=".ExamMgmt"
+    android:background="@drawable/bg2_blur">
 
 
-        <TextView
-            android:id="@+id/title_exam_mgmt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Exam Management"
-            android:textAlignment="center"
-            android:textColor="#000"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.514"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.014" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout_SubjectMgmt"
-            android:layout_width="334dp"
-            android:layout_height="492dp"
-            android:layout_marginTop="52dp"
-            android:background="@drawable/rounded_border_registration"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Spinner
-                android:id="@+id/spinner_Subject"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
-
-            <EditText
-                android:id="@+id/txt_ExamName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:ems="10"
-                android:hint="Enter Exam Name : Python Unit 1" />
-
-            <EditText
-                android:id="@+id/txt_TotalMarks"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:ems="10"
-                android:hint="Enter Total Marks : 70"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/txt_PassingMarks"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:ems="10"
-                android:hint="Enter Passing Marks : 35"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/txt_ExamDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:ems="10"
-                android:inputType="date"
-                android:hint="Enter Exam Date : 01/10/2021" />
-
-            <Button
-                android:id="@+id/btn_DeclareExam"
-                android:layout_width="147dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_button"
-                android:text="Declare Exam" />
-
-        </LinearLayout>
-
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.design.widget.NavigationView
+    <TextView
+        android:id="@+id/title_exam_mgmt"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/admin_navigation_menu" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Exam Management"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.014" />
 
-</android.support.v4.widget.DrawerLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout_SubjectMgmt"
+        android:layout_width="334dp"
+        android:layout_height="492dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/rounded_border_registration"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Spinner
+            android:id="@+id/spinner_Subject"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="30dp" />
+
+        <EditText
+            android:id="@+id/txt_ExamName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Enter Exam Name : Python Unit 1" />
+
+        <EditText
+            android:id="@+id/txt_TotalMarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Enter Total Marks : 70"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/txt_PassingMarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Enter Passing Marks : 35"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/txt_ExamDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="date"
+            android:hint="Enter Exam Date : 01/10/2021" />
+
+        <Button
+            android:id="@+id/btn_DeclareExam"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rounded_button"
+            android:text="Declare Exam" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
