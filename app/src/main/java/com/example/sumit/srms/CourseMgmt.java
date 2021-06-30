@@ -30,3 +30,6 @@ public class CourseMgmt extends Fragment {
 
 }
 
+//R.id.home -> view.findViewById(R.id.spinner_director);
+//
+//CourseMgmt.this   ->   this.getActivity()

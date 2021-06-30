@@ -1,6 +1,7 @@
 package com.example.sumit.srms;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -20,6 +21,10 @@ public class StudentDrawer extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_drawer);
 
+        //Screen Rotation Disable Code
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //Drawer Code
         Toolbar toolbar = findViewById(R.id.student_toolbar);
         setSupportActionBar(toolbar);
 
@@ -36,8 +41,11 @@ public class StudentDrawer extends AppCompatActivity implements NavigationView.O
             getSupportFragmentManager().beginTransaction().replace(R.id.student_fragment_container, new Home()).commit();
             navigationView.setCheckedItem(R.id.student_nav_home);
         }
+        //Drawer Code End
     }
 
+
+    //Drawer Methods
     @Override
     public void onBackPressed() {
         if(drawer.isDrawerOpen(GravityCompat.START))
@@ -67,7 +75,7 @@ public class StudentDrawer extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.student_nav_about_us:
-                getSupportFragmentManager().beginTransaction().replace(R.id.student_fragment_container, new DivisionMgmt()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.student_fragment_container, new Home()).commit();
                 break;
 
             case R.id.student_nav_logout:
@@ -78,4 +86,5 @@ public class StudentDrawer extends AppCompatActivity implements NavigationView.O
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    //Drawer Methods End
 }

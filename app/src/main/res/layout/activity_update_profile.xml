@@ -7,14 +7,14 @@
     android:layout_height="wrap_content"
     android:fillViewport="true"
     android:background="@drawable/bg2_blur"
-    tools:context=".RegistrationActivity">
+    tools:context=".UpdateProfile">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/ImgUser"
+            android:id="@+id/imageView3"
             android:layout_width="174dp"
             android:layout_height="107dp"
             android:layout_marginTop="4dp"
@@ -26,7 +26,7 @@
 
         <LinearLayout
             android:layout_width="334dp"
-            android:layout_height="520dp"
+            android:layout_height="410dp"
             android:layout_marginTop="92dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -43,71 +43,49 @@
                 />
 
             <EditText
-                android:id="@+id/txt_enrollment"
+                android:id="@+id/txt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="Enter Enrollment Number"
-                android:inputType="number"
-                android:textColorHint="#0D0C0C" />
-
-            <EditText
-                android:id="@+id/txt_UserName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Enter Name"
-                android:inputType="textPersonName"
-                android:textColorHint="#131111" />
+                android:layout_marginTop="30dp"
+                android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/txt_email"
+                android:id="@+id/txt_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:ems="10"
-                android:hint="Enter Email"
-                android:inputType="textEmailAddress"
-                android:textColorHint="#090808" />
-
-            <EditText
-                android:id="@+id/txt_Password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="Enter Password"
-                android:inputType="textPassword"
-                android:textColorHint="#111111" />
-
-            <Spinner
-                android:id="@+id/spinner6"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginTop="20dp"
-                />
-            <Spinner
-                android:id="@+id/spinner7"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginTop="20dp"
-                />
+                android:hint="Password"
+                android:layout_marginTop="30dp"
+                android:inputType="textPassword" />
 
             <Button
-                android:id="@+id/SignUp"
-                android:layout_width="125dp"
+                android:id="@+id/btn_img_file"
+                android:layout_width="152dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
+                android:background="#9400BCD4"
+                android:drawableLeft="@drawable/ic_add_a_photo_black"
+                android:text="Upload Image" />
 
-                android:background="@drawable/rounded_button"
-                android:text="Add User" />
+            <TextView
+                android:id="@+id/filename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
 
-
+            <Button
+                android:id="@+id/btn_UpdateProfile"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:hint="Update Profile"
+                android:textColorHint="#0B0B0B"
+                android:background="@drawable/rounded_button"/>
         </LinearLayout>
-
-
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
+

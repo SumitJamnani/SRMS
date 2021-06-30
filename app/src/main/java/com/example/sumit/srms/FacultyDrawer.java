@@ -1,6 +1,7 @@
 package com.example.sumit.srms;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +22,10 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faculty_drawer);
 
+        //Screen Rotation Disable Code
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //Drawer Code
         Toolbar toolbar = findViewById(R.id.faculty_toolbar);
         setSupportActionBar(toolbar);
 
@@ -37,8 +42,10 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
             getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new Home()).commit();
             navigationView.setCheckedItem(R.id.faculty_nav_home);
         }
+        //Drawer Code End
     }
 
+    //Drawer Methods
     @Override
     public void onBackPressed() {
         if(drawer.isDrawerOpen(GravityCompat.START))
@@ -49,6 +56,7 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
         {
             super.onBackPressed();
         }
+
     }
 
     @Override
@@ -87,12 +95,12 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new ImportUser()).commit();
                 break;
 
-            case R.id.faculty_nav_semester_update:
-                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new SemesterUpdate()).commit();
+            case R.id.faculty_nav_update_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new UpdateProfile()).commit();
                 break;
 
-            case R.id.faculty_nav_manage_faculty:
-                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new FacultyMgmt()).commit();
+            case R.id.faculty_nav_semester_update:
+                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new SemesterUpdate()).commit();
                 break;
 
             case R.id.faculty_nav_manual_result:
@@ -115,4 +123,5 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    //Drawer Methods End
 }

@@ -1,102 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".StudentUpdateProfile"
-    android:background="@drawable/bg2_blur">
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:background="@drawable/bg2_blur"
+    tools:context=".StudentUpdateProfile">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="174dp"
-        android:layout_height="107dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/username" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="174dp"
+            android:layout_height="107dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/username" />
 
-    <LinearLayout
-        android:layout_width="334dp"
-        android:layout_height="510dp"
-        android:layout_marginTop="92dp"
-        android:background="@drawable/rounded_border_registration"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="334dp"
+            android:layout_height="510dp"
+            android:layout_marginTop="92dp"
+            android:background="@drawable/rounded_border_registration"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/txt_en"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="205350694034"
-            android:layout_marginTop="30dp"
-            android:inputType="none"
-            android:textIsSelectable="true"
-            android:focusable="false" />
+            <EditText
+                android:id="@+id/txt_en"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="205350694034"
+                android:layout_marginTop="30dp"
+                android:inputType="none"
+                android:textIsSelectable="true"
+                android:focusable="false" />
 
-        <EditText
-            android:id="@+id/txt_class"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:ems="10"
-            android:hint="MCA Sem 2"
-            android:inputType="none"
-            android:textIsSelectable="true"
-            android:focusable="false" />
+            <EditText
+                android:id="@+id/txt_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:ems="10"
+                android:hint="MCA Sem 2"
+                android:inputType="none"
+                android:textIsSelectable="true"
+                android:focusable="false" />
 
-        <EditText
-            android:id="@+id/txt_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter Name"
-            android:layout_marginTop="30dp"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Name"
+                android:layout_marginTop="30dp"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/txt_pwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Password"
-            android:layout_marginTop="30dp"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/txt_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:layout_marginTop="30dp"
+                android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/btn_img_file"
-            android:layout_width="152dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:background="#9400BCD4"
-            android:drawableLeft="@drawable/ic_add_a_photo_black"
-            android:text="Upload Image" />
+            <Button
+                android:id="@+id/btn_img_file"
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="#9400BCD4"
+                android:drawableLeft="@drawable/ic_add_a_photo_black"
+                android:text="Upload Image" />
 
-        <TextView
-            android:id="@+id/filename"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/filename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
 
-        <Button
-            android:id="@+id/btn_UpdateProfile"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center"
-            android:hint="Update Profile"
-            android:textColorHint="#0B0B0B"
-            android:background="@drawable/rounded_button"/>
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+            <Button
+                android:id="@+id/btn_UpdateProfile"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:hint="Update Profile"
+                android:textColorHint="#0B0B0B"
+                android:background="@drawable/rounded_button"/>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
 

@@ -20,7 +20,7 @@ public class RegistrationActivity extends Fragment {
         View view = inflater.inflate(R.layout.activity_registration, container,false);
 
         //Spinner Code
-        Spinner mySpinner = (Spinner) view.findViewById(R.id.spinner5);
+        Spinner mySpinner = (Spinner) view.findViewById(R.id.spinner_role);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Role));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);

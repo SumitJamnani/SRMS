@@ -4,99 +4,102 @@
     tools:showIn="navigation_view">
 
     <group
-        android:id="@+id/faculty_group_home"
+        android:id="@+id/director_group_home"
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/faculty_nav_home"
+            android:id="@+id/director_nav_home"
             android:icon="@drawable/ic_home"
             android:title="Home" />
     </group>
 
     <group
-        android:id="@+id/faculty_group_master_pages"
+        android:id="@+id/director_group_master_pages"
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/faculty_nav_master_pages"
+            android:id="@+id/director_nav_master_pages"
             android:icon="@drawable/ic_laptop"
             android:title="Master Pages" />
 
         <item
-            android:id="@+id/faculty_nav_course"
+            android:id="@+id/director_nav_course"
             android:title="Course" />
 
         <item
-            android:id="@+id/faculty_nav_semester"
+            android:id="@+id/director_nav_semester"
             android:title="Semester" />
 
         <item
-            android:id="@+id/faculty_nav_division"
+            android:id="@+id/director_nav_division"
             android:title="Division" />
 
         <item
-            android:id="@+id/faculty_nav_subject"
+            android:id="@+id/director_nav_subject"
             android:title="Subject" />
 
         <item
-            android:id="@+id/faculty_nav_exam"
+            android:id="@+id/director_nav_exam"
             android:title="Declare Exam" />
     </group>
 
 
     <group
-        android:id="@+id/faculty_group_manage_users"
+        android:id="@+id/director_group_manage_users"
         android:checkableBehavior="single">
     <item
-        android:id="@+id/faculty_nav_manage_users"
+        android:id="@+id/director_nav_manage_users"
         android:icon="@drawable/ic_people"
         android:title="Manage Users" />
 
         <item
-            android:id="@+id/faculty_nav_manual_user"
+            android:id="@+id/director_nav_manual_user"
             android:title="Add Users Manually" />
 
         <item
-            android:id="@+id/faculty_nav_import_users"
+            android:id="@+id/director_nav_import_users"
             android:title="Import Users" />
 
         <item
-            android:id="@+id/faculty_nav_update_profile"
+            android:id="@+id/director_nav_update_profile"
             android:title="Update Profile" />
 
         <item
-            android:id="@+id/faculty_nav_semester_update"
+            android:id="@+id/director_nav_semester_update"
             android:title="Semester Update" />
 
+        <item
+            android:id="@+id/director_nav_manage_faculty"
+            android:title="Manage Faculty" />
     </group>
 
     <group
-        android:id="@+id/faculty_group_manage_results"
+        android:id="@+id/director_group_manage_results"
         android:checkableBehavior="single">
     <item
-        android:id="@+id/faculty_nav_manage_results"
+        android:id="@+id/director_nav_manage_results"
         android:icon="@drawable/ic_book"
         android:title="Manage Results" />
 
         <item
-            android:id="@+id/faculty_nav_manual_result"
+            android:id="@+id/director_nav_manual_result"
             android:title="Add Results Manually" />
 
         <item
-            android:id="@+id/faculty_nav_import_results"
+            android:id="@+id/director_nav_import_results"
             android:title="Import Results" />
     </group>
 
     <group
-        android:id="@+id/faculty_group_reports_logout"
+        android:id="@+id/director_faculty_group_reports_logout"
         android:checkableBehavior="single">
     <item
-        android:id="@+id/faculty_nav_reports"
+        android:id="@+id/director_nav_reports"
         android:icon="@drawable/ic_pie_chart"
         android:title="Reports" />
 
     <item
-        android:id="@+id/faculty_nav_logout"
+        android:id="@+id/director_nav_logout"
         android:icon="@drawable/ic_logout"
         android:title="Logout" />
     </group>

@@ -1,6 +1,7 @@
 package com.example.sumit.srms;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +22,10 @@ public class AdminDrawer extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_drawer);
 
+        //Screen Rotation Disable Code
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        // Drawer Code
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -32,13 +37,14 @@ public class AdminDrawer extends AppCompatActivity implements NavigationView.OnN
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(savedInstanceState == null)
-        {
+        if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new Home()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
+        //Drawer Code End
     }
 
+    //Drawer Methods
     @Override
     public void onBackPressed() {
         if(drawer.isDrawerOpen(GravityCompat.START))
@@ -87,6 +93,10 @@ public class AdminDrawer extends AppCompatActivity implements NavigationView.OnN
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new ImportUser()).commit();
                 break;
 
+            case R.id.admin_nav_update_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new UpdateProfile()).commit();
+                break;
+
             case R.id.nav_semester_update:
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new SemesterUpdate()).commit();
                 break;
@@ -115,4 +125,5 @@ public class AdminDrawer extends AppCompatActivity implements NavigationView.OnN
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    //Drawer Methods End
 }

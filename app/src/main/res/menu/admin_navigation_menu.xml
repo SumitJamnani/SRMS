@@ -61,6 +61,10 @@
             android:title="Import Users" />
 
         <item
+            android:id="@+id/admin_nav_update_profile"
+            android:title="Update Profile" />
+
+        <item
             android:id="@+id/nav_semester_update"
             android:title="Semester Update" />
 
