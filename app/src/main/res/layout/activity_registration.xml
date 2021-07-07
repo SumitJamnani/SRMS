@@ -9,7 +9,7 @@
     android:background="@drawable/bg2_blur"
     tools:context=".RegistrationActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -26,7 +26,7 @@
 
         <LinearLayout
             android:layout_width="334dp"
-            android:layout_height="520dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="92dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -39,75 +39,124 @@
                 android:id="@+id/spinner_role"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="15dp"
-                />
+                android:layout_marginTop="15dp" />
 
             <EditText
-                android:id="@+id/txt_enrollment"
+                android:id="@+id/txt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="Enter Enrollment Number"
-                android:inputType="number"
-                android:textColorHint="#0D0C0C" />
-
-            <EditText
-                android:id="@+id/txt_UserName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="Enter Name"
-                android:inputType="textPersonName"
-                android:textColorHint="#131111" />
+                android:hint="Enter Full Name"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/txt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="Enter Email"
-                android:inputType="textEmailAddress"
-                android:textColorHint="#090808" />
+                android:inputType="textEmailAddress" />
 
-            <EditText
-                android:id="@+id/txt_Password"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                app:passwordToggleEnabled="true"
+                android:layout_marginTop="10dp">
+            <EditText
+                android:id="@+id/txt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Enter Password"
                 android:inputType="textPassword"
-                android:textColorHint="#111111" />
+                android:textColorHint="#0D0C0C" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <Spinner
-                android:id="@+id/spinner6"
+            <EditText
+                android:id="@+id/txt_enrollment"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginTop="20dp"
-                />
-            <Spinner
-                android:id="@+id/spinner7"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginTop="20dp"
-                />
-
-            <Button
-                android:id="@+id/SignUp"
-                android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:hint="Enter Enrollment Number"
+                android:inputType="number" />
 
-                android:background="@drawable/rounded_button"
-                android:text="Add User" />
+            <Spinner
+                android:id="@+id/spinner_course"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp" />
 
+            <Spinner
+                android:id="@+id/spinner_semester"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp" />
+            <Spinner
+                android:id="@+id/spinner_division"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set1"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_AddUser"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button"
+                    android:text="Add"
+                    android:textColor="#ffffff" />
+                <Button
+                    android:id="@+id/btn_SearchUser"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Search"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_UpdateUser"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="Update"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+
+                <Button
+                    android:id="@+id/btn_DeleteUser"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Delete"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
 
         </LinearLayout>
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

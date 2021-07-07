@@ -1,0 +1,217 @@
+----------Add This Code Before The onCreate() Method----------
+
+    //Declaration Part
+    SQLiteDatabase db;
+    Button btn_sign_in, btn_search_data, btn_update_data, btn_delete_data;
+    EditText email_value, password_value;
+    Spinner spinner_user;
+
+----------Add This Code InSide The onCreate() Method----------
+        //Initialization Part
+        email_value = findViewById(R.id.email);
+        password_value = findViewById(R.id.password);
+        btn_sign_in = findViewById(R.id.btn_AddData);
+        btn_search_data = findViewById(R.id.btn_SearchData);
+        btn_update_data = findViewById(R.id.btn_UpdateData);
+        btn_delete_data = findViewById(R.id.btn_DeleteData);
+        spinner_user = findViewById(R.id.spinner_user);
+
+        //Initialize SetOnClickListener() Method For Buttons
+        btn_sign_in.setOnClickListener(this);
+        btn_search_data.setOnClickListener(this);
+        btn_update_data.setOnClickListener(this);
+        btn_delete_data.setOnClickListener(this);
+
+        // Database Related Code : Create Database SRMS
+        db=openOrCreateDatabase("SRMS", Context.MODE_PRIVATE, null);
+
+
+        // Database Related Code : Create Table Login
+        db.execSQL("CREATE TABLE IF NOT EXISTS login_m(email VARCHAR(50) PRIMARY KEY, password VARCHAR(30))");
+
+        //Fill Spinner With Database Values
+        fill_spinner();
+
+
+
+----------Add This Code outSide The onCreate() Method----------
+    //CRUD operations on Button Click
+    //OnClick Button Events
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.btn_AddData:
+                InsertData();
+                break;
+
+            case R.id.btn_UpdateData:
+                UpdateData();
+                break;
+
+            case R.id.btn_DeleteData:
+                DeleteData();
+                break;
+
+            case R.id.btn_SearchData:
+                SearchData();
+                break;
+        }
+    }
+
+
+    // Code : Insert Data In Table
+    public void InsertData()
+    {
+        if(email_value.getText().toString().trim().length()==0|| password_value.getText().toString().trim().length()==0)
+        {
+            msg(DatabaseDemo.this, "Error : All Fields Are Required!!");
+            return;
+        }
+        else
+        {
+            try {
+                db.execSQL("INSERT INTO login_m(email,password)VALUES('" + email_value.getText() + "','" +
+                        password_value.getText() + "')");
+                //msg(LoginActivity.this, "Record Added Successfully!!");
+                clear();
+                Intent intent = new Intent(DatabaseDemo.this, AdminDrawer.class);
+                startActivity(intent);
+            }
+            catch(SQLException e)
+            {
+                msg(DatabaseDemo.this, "Error : Something Went Wrong or Duplicate Record Found!!");
+            }
+        }
+    }
+
+
+    // Code : Update Particular Data From Table
+    public void UpdateData()
+    {
+        if(email_value.getText().toString().trim().length()==0)
+        {
+            msg(DatabaseDemo.this, "Error : Enter Email Id For Update The Record!!");
+            return;
+        }
+        Cursor record = db.rawQuery("SELECT * FROM login_m WHERE email='"+ email_value.getText()+"'", null);
+        if(record.moveToFirst()) {
+
+            db.execSQL("UPDATE login_m  SET password ='"+ password_value.getText()+"'");
+            msg(DatabaseDemo.this, "Record Updated Successfully!!");
+            clear();
+        }
+        else
+        {
+            msg(DatabaseDemo.this, "Error : Record Not Found or Invalid Email Id!!");
+        }
+    }
+
+    // Code : Delete Particular Data From Table
+    public void DeleteData()
+    {
+        if(email_value.getText().toString().trim().length()==0)
+        {
+            msg(DatabaseDemo.this, "Error : Enter Email Id For Delete The Record!!");
+            return;
+        }
+        Cursor record = db.rawQuery("SELECT * FROM login_m WHERE email ='"+ email_value.getText()+"'", null);
+        if(record.moveToFirst())
+        {
+            db.execSQL("DELETE FROM login_m WHERE email ='"+ email_value.getText()+"'");
+            msg(DatabaseDemo.this, "Record Deleted Successfully!!");
+            clear();
+        }
+        else
+        {
+            msg(DatabaseDemo.this, "Error : Record Not Found or Invalid Email Id!!");
+        }
+    }
+
+    // Code : View Particular Data From Table
+    public void SearchData()
+    {
+        if(email_value.getText().toString().trim().length()==0)
+        {
+            msg(DatabaseDemo.this, "Error : Enter Email Id For Search The Record!!");
+            return;
+        }
+        Cursor record = db.rawQuery("SELECT * FROM login_m WHERE email='"+email_value.getText()+"'", null);
+        if(record.moveToFirst())
+        {
+            email_value.setText(record.getString(0));
+            password_value.setText(record.getString(1));
+        }
+        else
+        {
+            msg(DatabaseDemo.this, "Error : Record Not Found or Invalid Email Id!!");
+        }
+    }
+
+    // Code : View All Data From Table
+    public void ViewData()
+    {
+        Cursor record = db.rawQuery("SELECT * FROM login_m", null);
+        if(record.getCount()==0)
+        {
+            msg(DatabaseDemo.this, "No Records Found!!");
+            return;
+        }
+        else
+        {
+            StringBuffer buffer = new StringBuffer();
+            while (record.moveToNext()) {
+                buffer.append("Email : " + record.getString(0) + "\n");
+                buffer.append("Password : " + record.getString(1) + "\n\n");
+            }
+            msg(DatabaseDemo.this, buffer.toString());
+            record.close();
+
+        }
+    }
+
+    //Fill Spinner With Database Values
+    public void fill_spinner()
+    {
+        Cursor record = db.rawQuery("SELECT * FROM login_m", null);
+        if(record.getCount()==0)
+        {
+            msg(DatabaseDemo.this, "No Records Found!!");
+            return;
+        }
+        else
+        {
+            try {
+                List<String> email_array = new ArrayList<String>();
+                while (record.moveToNext())
+                {
+                    email_array.add(record.getString(0  ));
+                }
+                record.close();
+
+                ArrayAdapter<String> email_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, email_array);
+                email_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner_user.setAdapter(email_adapter);
+            }
+            catch (Exception e)
+            {
+                msg(DatabaseDemo.this, "Something Went Wrong!!!!");
+
+            }
+
+        }
+    }
+
+    // For Displaying Messages on Screen
+    public void msg(Context context, String str)
+    {
+        Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
+    }
+
+    // For Clearing Data From Views After CRUD operation
+    public void clear()
+    {
+        email_value.setText("");
+        password_value.setText("");
+    }

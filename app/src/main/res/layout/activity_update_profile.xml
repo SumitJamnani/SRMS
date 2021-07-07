@@ -9,7 +9,7 @@
     android:background="@drawable/bg2_blur"
     tools:context=".UpdateProfile">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -86,6 +86,6 @@
                 android:textColorHint="#0B0B0B"
                 android:background="@drawable/rounded_button"/>
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

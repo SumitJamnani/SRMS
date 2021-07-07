@@ -17,13 +17,13 @@
 
     <string-array name="Role">
         <item style="text-align:center;">-- Select Role --</item>
-        <item>Director</item>
-        <item>Faculty</item>
         <item>Student</item>
+        <item>Faculty</item>
+        <item>Director</item>
     </string-array>
 
     <string-array name="Course">
-        <item>--Select Course--</item>
+        <item>-- Select Course --</item>
         <item>MCA</item>
         <item>BCA</item>
         <item>MBA</item>

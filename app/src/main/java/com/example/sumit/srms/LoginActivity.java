@@ -2,10 +2,9 @@ package com.example.sumit.srms;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,12 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                String emailInput = email_input.getText().toString();
-                if(!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches())
-                {
-
-                }
-                Intent intent = new Intent(LoginActivity.this, Home.class);
+                Intent intent = new Intent(LoginActivity.this, AdminDrawer.class);
                 startActivity(intent);
             }
         });

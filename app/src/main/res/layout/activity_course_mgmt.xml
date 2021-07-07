@@ -9,7 +9,7 @@
     android:background="@drawable/bg2_blur"
     tools:context=".CourseMgmt">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -35,7 +35,7 @@
         <LinearLayout
             android:id="@+id/linearLayout_CourseMgmt"
             android:layout_width="334dp"
-            android:layout_height="280dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="88dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -59,16 +59,60 @@
                 android:layout_height="46dp"
                 android:layout_marginTop="30dp" />
 
-            <Button
-                android:id="@+id/btn_AddCourse"
-                android:layout_width="147dp"
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set1"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_AddCourse"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button"
+                    android:text="Add"
+                    android:textColor="#ffffff" />
+                <Button
+                    android:id="@+id/btn_SearchCourse"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Search"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_button"
-                android:text="Add Course" />
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btn_UpdateCourse"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="Update"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+
+                <Button
+                    android:id="@+id/btn_DeleteCourse"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Delete"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
         </LinearLayout>
-
-    </android.support.constraint.ConstraintLayout>
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

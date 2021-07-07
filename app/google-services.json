@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "897144969229",
+    "firebase_url": "https://srms-6d46f-default-rtdb.firebaseio.com",
+    "project_id": "srms-6d46f",
+    "storage_bucket": "srms-6d46f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897144969229:android:36a98fae8abca8a9719d44",
+        "android_client_info": {
+          "package_name": "com.example.sumit.srms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897144969229-aruqdgp85ddr7br6eltg6v62rbvv4148.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGu_Ujf-iurTlKleOkq4YWPziGHzkAX3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897144969229-aruqdgp85ddr7br6eltg6v62rbvv4148.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
