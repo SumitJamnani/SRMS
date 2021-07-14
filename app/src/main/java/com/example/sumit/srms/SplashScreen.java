@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -35,11 +36,10 @@ public class SplashScreen extends AppCompatActivity {
 
             @Override
             public void run() {
-
-                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+                    Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
         },SPLASH_SCREEN);
 
 

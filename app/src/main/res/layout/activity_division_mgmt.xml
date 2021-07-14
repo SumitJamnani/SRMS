@@ -35,7 +35,7 @@
         <LinearLayout
             android:id="@+id/linearLayout_DivisionMgmt"
             android:layout_width="334dp"
-            android:layout_height="358dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="112dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -45,33 +45,79 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/txt_Division"
+                android:id="@+id/txt_division"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:inputType="textCapWords"
                 android:ems="10"
                 android:hint="Enter Division : Division A" />
 
             <Spinner
-                android:id="@+id/spinner_Course"
+                android:id="@+id/spinner_course"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="20dp" />
 
             <Spinner
-                android:id="@+id/spinner_Semester"
+                android:id="@+id/spinner_semester"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="20dp" />
 
-            <Button
-                android:id="@+id/btn_AddDivision"
-                android:layout_width="147dp"
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set1"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_AddData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button"
+                    android:text="Add"
+                    android:textColor="#ffffff" />
+                <Button
+                    android:id="@+id/btn_SearchData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Search"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_button"
-                android:text="Add Division" />
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_UpdateData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="Update"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+
+                <Button
+                    android:id="@+id/btn_DeleteData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Delete"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
 
         </LinearLayout>
 

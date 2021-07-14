@@ -8,18 +8,27 @@
 
     <string name="title_activity_reports">Reports</string>
 
-    <string-array name="Demo">
-        <item>--Select Demo--</item>
-        <item>Demo1</item>
-        <item>Demo2</item>
-        <item>Demo3</item>
-    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="Role">
-        <item style="text-align:center;">-- Select Role --</item>
+        <item>-- Select Role --</item>
         <item>Student</item>
         <item>Faculty</item>
         <item>Director</item>
+    </string-array>
+
+    <string-array name="Role_Faculty">
+        <item>-- Select Role --</item>
+        <item>Student</item>
+        <item>Faculty</item>
+    </string-array>
+
+    <string-array name="Role_All">
+        <item>-- Select Role --</item>
+        <item>Student</item>
+        <item>Faculty</item>
+        <item>Director</item>
+        <item>Admin</item>
     </string-array>
 
     <string-array name="Course">
@@ -51,6 +60,7 @@
         <item>Semester 4</item>
     </string-array>
 
+
     <string-array name="New_Sem">
         <item style="text-align:center;">-- Select New Semester --</item>
         <item>Semester 1</item>
@@ -66,8 +76,6 @@
         <item>Division B</item>
 
     </string-array>
-
-
     <string-array name="Subject">
         <item style="text-align:center;">-- Select Subject --</item>
         <item>Python</item>
@@ -76,6 +84,7 @@
         <item>Software Testing</item>
         <item>Java Web Technology</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="Exam">
         <item style="text-align:center;">-- Select Exam --</item>
         <item>Python Unit-1</item>

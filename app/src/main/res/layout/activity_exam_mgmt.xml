@@ -35,7 +35,7 @@
         <LinearLayout
             android:id="@+id/linearLayout_SubjectMgmt"
             android:layout_width="334dp"
-            android:layout_height="492dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -45,55 +45,118 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Spinner
-                android:id="@+id/spinner_Subject"
+                android:id="@+id/spinner_course"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_semester"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_batch"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_subject"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
 
             <EditText
-                android:id="@+id/txt_ExamName"
+                android:id="@+id/txt_examname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:ems="10"
-                android:hint="Enter Exam Name : Python Unit 1" />
+                android:hint="Enter Exam Name : Python Unit 1"
+                android:inputType="textCapWords" />
 
             <EditText
-                android:id="@+id/txt_TotalMarks"
+                android:id="@+id/txt_totalmarks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="Enter Total Marks : 70"
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/txt_PassingMarks"
+                android:id="@+id/txt_passingmarks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="Enter Passing Marks : 35"
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/txt_ExamDate"
+                android:id="@+id/txt_examdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:ems="10"
                 android:inputType="date"
                 android:hint="Enter Exam Date : 01/10/2021" />
 
-            <Button
-                android:id="@+id/btn_DeclareExam"
-                android:layout_width="147dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_button"
-                android:text="Declare Exam" />
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set1"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btn_AddData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button"
+                    android:text="Add"
+                    android:textColor="#ffffff" />
+                <Button
+                    android:id="@+id/btn_SearchData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Search"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_UpdateData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="Update"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+
+                <Button
+                    android:id="@+id/btn_DeleteData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Delete"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
         </LinearLayout>
 
 

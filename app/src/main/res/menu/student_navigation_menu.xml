@@ -6,18 +6,18 @@
         android:icon="@drawable/ic_home"/>
 
     <item   android:id="@+id/student_nav_update_profile"
-            android:title="Update Profile"
-            android:icon="@drawable/ic_person"/>
+        android:title="Update Profile"
+        android:icon="@drawable/ic_person"/>
 
     <item   android:id="@+id/student_nav_results"
-            android:title="Results"
-            android:icon="@drawable/ic_book" />
+        android:title="Results"
+        android:icon="@drawable/ic_book" />
 
     <item   android:id="@+id/student_nav_about_us"
-            android:title="About Us"
-            android:icon="@drawable/ic_people" />
+        android:title="About Us"
+        android:icon="@drawable/ic_people" />
 
     <item   android:id="@+id/student_nav_logout"
-            android:title="Logout"
-            android:icon="@drawable/ic_logout" />
+        android:title="Logout"
+        android:icon="@drawable/ic_logout" />
 </menu>

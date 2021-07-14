@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:fillViewport="true"
     android:background="@drawable/bg2_blur"
-    tools:context=".CourseMgmt">
+    tools:context=".BatchMgmt">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                 android:layout_marginTop="30dp"
                 android:ems="10"
                 android:hint="Enter CourseName : MCA"
-                />
+                android:inputType="textCapWords" />
 
             <Spinner
                 android:id="@+id/spinner_director"
@@ -68,7 +68,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_AddCourse"
+                    android:id="@+id/btn_AddData"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -76,7 +76,7 @@
                     android:text="Add"
                     android:textColor="#ffffff" />
                 <Button
-                    android:id="@+id/btn_SearchCourse"
+                    android:id="@+id/btn_SearchData"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -94,7 +94,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_UpdateCourse"
+                    android:id="@+id/btn_UpdateData"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_button"
@@ -103,7 +103,7 @@
                     android:stateListAnimator="@null" />
 
                 <Button
-                    android:id="@+id/btn_DeleteCourse"
+                    android:id="@+id/btn_DeleteData"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"

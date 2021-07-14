@@ -32,7 +32,7 @@
 
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/txt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true">
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/txt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
@@ -71,7 +71,7 @@
                     android:textColorLink="#001286"/> -->
 
         <Button
-            android:id="@+id/SignIn"
+            android:id="@+id/btn_SignIn"
             android:layout_width="107dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

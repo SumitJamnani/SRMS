@@ -26,7 +26,7 @@
         <LinearLayout
             android:id="@+id/linearLayout4"
             android:layout_width="334dp"
-            android:layout_height="505dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -36,230 +36,305 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Spinner
-                android:id="@+id/spinner_Subject"
+                android:id="@+id/spinner_subject"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="15dp" />
 
             <Spinner
-                android:id="@+id/spinner_Exam"
+                android:id="@+id/spinner_exam"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="15dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_get_result"
                 android:layout_width="147dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/rounded_button"
                 android:text="Get Result" />
 
-            <TableLayout
-                android:id="@+id/tbl_result"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_height="wrap_content">
 
+                <TableLayout
+                    android:id="@+id/tbl_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:visibility="invisible" >
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="clip_horizontal"
-                        android:layout_weight="2"
-                        android:background="#4ad71b"
-                        android:text="Result"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="20dp" />
-                </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="clip_horizontal"
+                            android:layout_weight="2"
+                            android:background="#4ad71b"
+                            android:text="Result"
+                            android:textAlignment="center"
+                            android:textColor="#fff"
+                            android:textSize="20dp" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:id="@+id/td_enrollment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Enrollment Number"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Enrollment Number"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="205350694034" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_enrollment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="205350694034" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Semester"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Name"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/td_semester"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="2" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="Sumit Jamnani" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Subject"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Exam"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/td_subject"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="Python" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_exam"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="JWT Unit 2" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Exam Name"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Course Name"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/td_exam_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="Python Unit 1" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_course_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="MCA" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Marks obtained"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Batch"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/td_marks_obtained"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:textColor="#4ad71b"
-                        android:text="69" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_batch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="MCA Batch2 2021" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Status"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Semester"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/td_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:textColor="#4ad71b"
-                        android:text="Pass" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_semester"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="2" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Total Marks"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Division"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/td_total_marks"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="70" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_division"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="Division A" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:id="@+id/td_passing_marks"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Passing Marks"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Faculty"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="35" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_faculty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="Tinal Parikh" />
+                    </TableRow>
 
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:text="Exam Date"
-                        android:textStyle="bold" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Subject"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/td_exam_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="01-10-2021" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/txt_subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="JWT" />
+                    </TableRow>
 
-                <TableRow>
-                    <Button
-                        android:id="@+id/btn_download_result"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_span="2"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:background="#4ad71b"
-                        android:text="Download Result"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="12dp"
-                        android:layout_marginTop="5dp"/>
-                </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Marks obtained"
+                            android:textStyle="bold" />
 
-            </TableLayout>
+                        <TextView
+                            android:id="@+id/txt_marks_obtained"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="69"
+                            android:textColor="#2196F3" />
+                    </TableRow>
 
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Status"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="Pass" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Total Marks"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_total_marks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="70" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Passing Marks"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_passing_marks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="35" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Exam Date"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_exam_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="01-10-2021" />
+                    </TableRow>
+                </TableLayout>
+            </FrameLayout>
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

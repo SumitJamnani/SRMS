@@ -1,22 +1,28 @@
 package com.example.sumit.srms;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 public class FacultyDrawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //Declaration Part
-    SQLiteDatabase db;
     private DrawerLayout drawer;
 
 
@@ -27,9 +33,6 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
 
         //Screen Rotation Disable Code
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        // Database Related Code : Create Database SRMS
-        db=openOrCreateDatabase("SRMS", Context.MODE_PRIVATE, null);
 
         //Drawer Code
         Toolbar toolbar = findViewById(R.id.faculty_toolbar);
@@ -49,6 +52,32 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
             navigationView.setCheckedItem(R.id.faculty_nav_home);
         }
         //Drawer Code End
+
+        //Check Internet Connection
+        checkInternet();
+    }
+
+    //Check If Internet Is Connected or Not!!
+    public void checkInternet()
+    {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting())
+        {
+            new SweetAlertDialog(FacultyDrawer.this, SweetAlertDialog.SUCCESS_TYPE)
+                    .setTitleText("SRMS")
+                    .setContentText("Welcome To Faculty Panel :)")
+                    .setConfirmText("Thank You!")
+                    .show();
+        }
+        else
+        {
+            new SweetAlertDialog(FacultyDrawer.this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("No Internet (:")
+                    .setContentText("Please Connect Your Device With Internet For Get Better Experience of This App :)")
+                    .setConfirmText("Got It!")
+                    .show();
+        }
     }
 
     //Drawer Methods
@@ -60,9 +89,17 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
         }
         else
         {
-            super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setMessage("Are you sure you want to exit from SRMS?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            FacultyDrawer.this.finish();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
         }
-
     }
 
     @Override
@@ -81,6 +118,10 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new SemesterMgmt()).commit();
                 break;
 
+            case R.id.faculty_nav_batch:
+                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new BatchMgmt()).commit();
+                break;
+
             case R.id.faculty_nav_division:
                 getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new DivisionMgmt()).commit();
                 break;
@@ -97,10 +138,6 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new RegistrationActivity()).commit();
                 break;
 
-            case R.id.faculty_nav_import_users:
-                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new ImportUser()).commit();
-                break;
-
             case R.id.faculty_nav_update_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new UpdateProfile()).commit();
                 break;
@@ -109,20 +146,27 @@ public class FacultyDrawer extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new SemesterUpdate()).commit();
                 break;
 
-            case R.id.faculty_nav_manual_result:
-                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new ManualResult()).commit();
+            case R.id.faculty_nav_manage_faculty:
+                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new FacultyMgmt()).commit();
                 break;
 
-            case R.id.faculty_nav_import_results:
-                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new ImportResults()).commit();
+            case R.id.faculty_nav_manual_result:
+                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new ManualResult()).commit();
                 break;
 
             case R.id.faculty_nav_reports:
                 getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new Reports()).commit();
                 break;
 
+            case R.id.faculty_nav_about_us:
+                getSupportFragmentManager().beginTransaction().replace(R.id.faculty_fragment_container, new AboutUs()).commit();
+                break;
+
             case R.id.faculty_nav_logout:
+                SessionMgmt sessionMgmt = new SessionMgmt(FacultyDrawer.this);
+                sessionMgmt.remove_session();
                 Intent intent = new Intent(FacultyDrawer.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 break;
         }

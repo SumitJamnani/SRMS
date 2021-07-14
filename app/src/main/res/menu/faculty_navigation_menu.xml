@@ -31,6 +31,10 @@
             android:title="Semester" />
 
         <item
+            android:id="@+id/faculty_nav_batch"
+            android:title="Batch" />
+
+        <item
             android:id="@+id/faculty_nav_division"
             android:title="Division" />
 
@@ -47,18 +51,14 @@
     <group
         android:id="@+id/faculty_group_manage_users"
         android:checkableBehavior="single">
-    <item
-        android:id="@+id/faculty_nav_manage_users"
-        android:icon="@drawable/ic_people"
-        android:title="Manage Users" />
+        <item
+            android:id="@+id/faculty_nav_manage_users"
+            android:icon="@drawable/ic_people"
+            android:title="Manage Users" />
 
         <item
             android:id="@+id/faculty_nav_manual_user"
-            android:title="Add Users Manually" />
-
-        <item
-            android:id="@+id/faculty_nav_import_users"
-            android:title="Import Users" />
+            android:title="Register Users" />
 
         <item
             android:id="@+id/faculty_nav_update_profile"
@@ -68,37 +68,41 @@
             android:id="@+id/faculty_nav_semester_update"
             android:title="Semester Update" />
 
+        <item
+            android:id="@+id/faculty_nav_manage_faculty"
+            android:title="Manage Faculty" />
+
     </group>
 
     <group
         android:id="@+id/faculty_group_manage_results"
         android:checkableBehavior="single">
-    <item
-        android:id="@+id/faculty_nav_manage_results"
-        android:icon="@drawable/ic_book"
-        android:title="Manage Results" />
+        <item
+            android:id="@+id/faculty_nav_manage_results"
+            android:icon="@drawable/ic_book"
+            android:title="Manage Results" />
 
         <item
             android:id="@+id/faculty_nav_manual_result"
-            android:title="Add Results Manually" />
-
-        <item
-            android:id="@+id/faculty_nav_import_results"
-            android:title="Import Results" />
+            android:title="Declare Results" />
     </group>
 
     <group
         android:id="@+id/faculty_group_reports_logout"
         android:checkableBehavior="single">
-    <item
-        android:id="@+id/faculty_nav_reports"
-        android:icon="@drawable/ic_pie_chart"
-        android:title="Reports" />
+        <item
+            android:id="@+id/faculty_nav_reports"
+            android:icon="@drawable/ic_pie_chart"
+            android:title="Reports" />
 
-    <item
-        android:id="@+id/faculty_nav_logout"
-        android:icon="@drawable/ic_logout"
-        android:title="Logout" />
+        <item   android:id="@+id/faculty_nav_about_us"
+            android:title="About Us"
+            android:icon="@drawable/ic_people" />
+
+        <item
+            android:id="@+id/faculty_nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout" />
     </group>
 
 </menu>

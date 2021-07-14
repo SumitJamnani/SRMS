@@ -16,32 +16,50 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CourseMgmt extends Fragment implements View.OnClickListener {
 
     //Declaration Part
-    SQLiteDatabase db;
+    private FirebaseDatabase db;
+    private DatabaseReference table_course;
+    private DatabaseReference table_registration;
+    ChildEventListener childEventListener;
+    String userId;
+
     EditText txt_course;
-    Spinner spinner_director;
-    String director_value, course_old_value;
-    int director_id;
     Button btn_add_course, btn_search_course, btn_update_course, btn_delete_course;
+    Spinner spinner_director;
+    ArrayAdapter<String> adapter_director;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_course_mgmt, container,false);
+        View view = inflater.inflate(R.layout.activity_course_mgmt, container, false);
 
         //Initialization Part
-        txt_course = view.findViewById(R.id.txt_course);
+        db = FirebaseDatabase.getInstance();
+        table_course = db.getReference("course_m");
+        table_registration = db.getReference("registration_m");
         txt_course = view.findViewById(R.id.txt_course);
         spinner_director = view.findViewById(R.id.spinner_director);
-        btn_add_course = view.findViewById(R.id.btn_AddCourse);
-        btn_update_course = view.findViewById(R.id.btn_UpdateCourse);
-        btn_delete_course = view.findViewById(R.id.btn_DeleteCourse);
-        btn_search_course = view.findViewById(R.id.btn_SearchCourse);
+        btn_add_course = view.findViewById(R.id.btn_AddData);
+        btn_update_course = view.findViewById(R.id.btn_UpdateData);
+        btn_delete_course = view.findViewById(R.id.btn_DeleteData);
+        btn_search_course = view.findViewById(R.id.btn_SearchData);
 
         //Initialize SetOnClickListener() Method For Buttons
         btn_add_course.setOnClickListener(this);
@@ -49,11 +67,49 @@ public class CourseMgmt extends Fragment implements View.OnClickListener {
         btn_delete_course.setOnClickListener(this);
         btn_search_course.setOnClickListener(this);
 
-        //Connect Database And Create Table If Not Exist
-        DbConnect_CreateTable();
-
         //Fill Spinner With Database Values
         fill_spinner();
+
+        //Event Listeners
+        childEventListener = new ChildEventListener()
+        {
+            //Retrieve Data From Database
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+                if (snapshot.exists())
+                {
+                    int director_pos;
+                    userId = snapshot.getKey();
+                    Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
+                    if (data != null && !data.isEmpty())
+                    {
+                        director_pos = adapter_director.getPosition(data.get("director_name").toString());
+                        txt_course.setText(data.get("course_name").toString());
+                        spinner_director.setSelection(director_pos);
+
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getActivity(),"Error : Record Does Not Exist!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Error : Something Went Wrong While Fetching Record!!", Toast.LENGTH_SHORT).show();
+            }
+        };
 
         return view;
     }
@@ -62,160 +118,120 @@ public class CourseMgmt extends Fragment implements View.OnClickListener {
     //CRUD operations on Button Click
     //OnClick Button Events
     @Override
-    public void onClick(View v) {
-
+    public void onClick(View v)
+    {
         switch (v.getId())
         {
-            case R.id.btn_AddCourse:
+            case R.id.btn_AddData:
                 InsertData();
                 break;
 
-            case R.id.btn_UpdateCourse:
+            case R.id.btn_UpdateData:
                 UpdateData();
                 break;
 
-            case R.id.btn_DeleteCourse:
+            case R.id.btn_DeleteData:
                 DeleteData();
                 break;
 
-            case R.id.btn_SearchCourse:
+            case R.id.btn_SearchData:
                 SearchData();
                 break;
         }
     }
 
-    //Fill Spinner With Database Values
-    public void fill_spinner()
-    {
-        Cursor record = db.rawQuery("SELECT name FROM registration_m where user_role='Director'", null);
-        if(record.getCount()==0)
-        {
-            msg(this.getActivity(), "Please Register Director First!!");
-            return;
-        }
-        else
-        {
-            List<String> director_array = new ArrayList<String>();
-            director_array.add("-- Select Director --");
-            while (record.moveToNext())
-            {
-                director_array.add(record.getString(record.getColumnIndex("name")));
-            }
-            record.close();
 
-            ArrayAdapter<String> director_adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, director_array);
-            director_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner_director.setAdapter(director_adapter);
-        }
-    }
-
-
-    // Code : Connect Database With Fragment And Create Table If Noe Exist
-    public void DbConnect_CreateTable()
-    {
-        db = getActivity().openOrCreateDatabase("SRMS",android.content.Context.MODE_PRIVATE ,null);
-
-        // Database Related Code : Create Table Course_m
-        db.execSQL("CREATE TABLE IF NOT EXISTS course_m(course_id INTEGER PRIMARY KEY AUTOINCREMENT, course_name VARCHAR(30) UNIQUE, " +
-                "director_id INTEGER REFERENCES registration_m(reg_id))");
-    }
 
     // Code : Insert Data In Table
     public void InsertData()
     {
-        if(txt_course.getText().toString().trim().length()==0)
+        if (txt_course.getText().toString().trim().length() == 0)
         {
-            msg(this.getActivity(), "Error : Please Enter Course Name!!");
-            return;
+            Toast.makeText(getActivity(), "Error : Please Fill The Required Fields!!", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            // Initialize Selected Values of Spinners
-            Fetch_SpinnerData();
+            Map<String, Object> values = new HashMap<>();
+            values.put("course_name", txt_course.getText().toString());
+            values.put("director_name", spinner_director.getSelectedItem().toString());
 
-            try
+            String key = table_registration.push().getKey();
+            table_course.child(key).setValue(values).addOnSuccessListener(new OnSuccessListener<Void>()
             {
-                if(director_id!=0) {
-                    db.execSQL("INSERT INTO course_m(course_name,director_id)VALUES('" + txt_course.getText() + "', " + director_id + ")");
-                    msg(this.getActivity(), "Record Inserted!!");
+                @Override
+                public void onSuccess(Void unused)
+                {
+                    Toast.makeText(getActivity(), "Record Inserted Successfully!!", Toast.LENGTH_SHORT).show();
                     clear();
                 }
-                else
-                {
-                    msg(this.getActivity(), "Error : No Director Id Found For Selected Director Name!!");
-
-                }
-
-            }
-            catch(Exception e)
+            }).addOnFailureListener(new OnFailureListener()
             {
-                msg(this.getActivity(), "Error : Something Went Wrong While Inserting Data or Duplicate Record Found!!");
-            }
+                @Override
+                public void onFailure(@NonNull Exception e)
+                {
+                    Toast.makeText(getActivity(), "Error : Something Went Wrong While Inserting Record!!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
-
 
     // Code : Update Particular Data From Table
     public void UpdateData()
     {
-        if(txt_course.getText().toString().trim().length()==0)
+        if (txt_course.getText().toString().trim().length() == 0)
         {
-            msg(this.getActivity(), "Error : Enter Course Name For Update The Record!!");
-            return;
+            Toast.makeText(getActivity(), "Error : Enter Course Name For Update The Record!!", Toast.LENGTH_SHORT).show();
         }
-
-        else {
-            // Initialize Selected Values of Spinners
-            Fetch_SpinnerData();
-
-            try {
-                if(director_id!=0)
-                {
-                    Cursor record = db.rawQuery("SELECT * FROM course_m WHERE course_name like '" + course_old_value + "'", null);
-                    if (record.moveToFirst())
-                    {
-                        db.execSQL("UPDATE course_m  SET course_name = '" + txt_course.getText().toString() + "', director_id ='" + director_id + "' " +
-                                "WHERE course_name like '" + course_old_value + "'");
-                        msg(this.getActivity(), "Record Updated Successfully!!");
-                        clear();
-                    }
-                    else
-                    {
-                        msg(this.getActivity(), "Error : Something Went Wrong While Updating Data or Duplicate Record Found!!");
-                    }
-                }
-                else
-                {
-                    msg(this.getActivity(), "Error : No Director Id Found For Selected Director Name!!");
-
-                }
-            }
-            catch(Exception e)
+        else
+        {
+            Map<String, Object> values = new HashMap<>();
+            values.put("course_name", txt_course.getText().toString());
+            values.put("director_name", spinner_director.getSelectedItem().toString());
+            table_course.child(userId).updateChildren(values).addOnSuccessListener(new OnSuccessListener<Void>()
             {
-                msg(this.getActivity(), "Error : Something Went Wrong While Updating Data or Duplicate Record Found!!");
-            }
+                @Override
+                public void onSuccess(Void unused)
+                {
+                    Toast.makeText(getActivity(), "Record Updated Successfully!!", Toast.LENGTH_SHORT).show();
+                    clear();
+                }
+            }).addOnFailureListener(new OnFailureListener()
+            {
+                @Override
+                public void onFailure(@NonNull Exception e)
+                {
+                    Toast.makeText(getActivity(), "Error : Something Went Wrong While Updating Record!!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
-
 
     // Code : Delete Particular Data From Table
     public void DeleteData()
     {
-        if(txt_course.getText().toString().trim().length()==0)
+        if (txt_course.getText().toString().trim().length() == 0)
         {
-            msg(this.getActivity(), "Error : Enter Course Name For Delete The Record!!");
+            Toast.makeText(getActivity(), "Error : Enter Course Name For Delete The Record!!", Toast.LENGTH_SHORT).show();
             return;
-        }
-        Cursor record = db.rawQuery("SELECT * FROM course_m WHERE course_name like '"+ txt_course.getText()+"'", null);
-        if(record.moveToFirst())
-        {
-            db.execSQL("DELETE FROM course_m WHERE course_name like '"+ txt_course.getText()+"'");
-            msg(this.getActivity(), "Record Deleted Successfully!!");
-            clear();
         }
         else
         {
-            msg(this.getActivity(), "Error : Record Not Found or Invalid Course Name!!");
+            table_course.child(userId).removeValue().addOnSuccessListener(new OnSuccessListener<Void>()
+            {
+                @Override
+                public void onSuccess(Void unused)
+                {
+                    Toast.makeText(getActivity(), "Record Deleted Successfully!!", Toast.LENGTH_SHORT).show();
+                    clear();
+                }
+            }).addOnFailureListener(new OnFailureListener()
+            {
+                @Override
+                public void onFailure(@NonNull Exception e)
+                {
+                    Toast.makeText(getActivity(), "Error : Something Went Wrong While Deleting Record!!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
@@ -223,55 +239,88 @@ public class CourseMgmt extends Fragment implements View.OnClickListener {
     // Code : View Particular Data From Table
     public void SearchData()
     {
-        if(txt_course.getText().toString().trim().length()==0)
+        if (txt_course.getText().toString().trim().length() == 0)
         {
-            msg(this.getActivity(), "Error : Enter Course Name For Search The Record!!");
+            Toast.makeText(getActivity(), "Error : Enter Course Name For Search The Record!!", Toast.LENGTH_SHORT).show();
             return;
         }
-        else {
-            course_old_value = txt_course.getText().toString();
-            Cursor record = db.rawQuery("SELECT * FROM course_m WHERE course_name like '" + txt_course.getText() + "'", null);
-            if (record.moveToFirst()) {
-                txt_course.setText(record.getString(record.getColumnIndex("course_name")));
-                spinner_director.setSelection(record.getInt(record.getColumnIndex("director_id")));
-            } else {
-                msg(this.getActivity(), "Error : Record Not Found or Invalid Course Name!!");
-            }
-        }
-    }
-
-
-    // Fetch Id Of Spinner SelectedItem From Database
-    public void Fetch_SpinnerData()
-    {
-        director_value = spinner_director.getSelectedItem().toString();
-        Cursor record = db.rawQuery("SELECT reg_id FROM registration_m WHERE name like '"+director_value+"' AND user_role like 'Director'", null);
-        record.moveToFirst();
-
-        if(record.getCount()==0)
-        {
-            msg(this.getActivity(), "Error : No Director Id Found For Selected Director Name!!");
-            return;
-        }
-
         else
         {
-            director_id = record.getInt(record.getColumnIndex("reg_id"));
+            Query query_course = table_course.orderByChild("course_name").equalTo(txt_course.getText().toString());
+            query_course.addChildEventListener(childEventListener);
         }
-        record.close();
     }
 
-    // For Displaying Messages on Screen
-    public void msg(Context context, String str)
+
+    // Code : View All Data From Table
+    public void ViewData()
     {
-        Toast.makeText(this.getActivity(),str,Toast.LENGTH_SHORT).show();
+        Query fetch_data_query = table_course.orderByChild("course_name");
+        fetch_data_query.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot snapshot)
+            {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error)
+            {
+                Toast.makeText(getActivity(), "Error : Something Went Wrong While Fetching Record!!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
+
+    //Fill Spinner With Database Values
+    public void fill_spinner()
+    {
+        Query fetch_spinner_query = table_registration.orderByChild("name");
+        fetch_spinner_query.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if (snapshot.exists())
+                {
+                    List<String> director_array = new ArrayList<String>();
+                    director_array.add("-- Select Director --");
+                    for (DataSnapshot data : snapshot.getChildren())
+                    {
+                        switch (data.child("user_role").getValue().toString())
+                        {
+                            case "Director" :
+                                director_array.add(data.child("name").getValue().toString());
+                                break;
+                        }
+                    }
+                    adapter_director = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, director_array);
+                    adapter_director.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner_director.setAdapter(adapter_director);
+                }
+
+                else
+                {
+                    Toast.makeText(getActivity(), "Error : Records Not Found!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+                Toast.makeText(getActivity(), "Error : Something Went Wrong While Fetching Record!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     // For Clearing Data From Views After CRUD operation
     public void clear()
     {
-        spinner_director.setSelection(0);
         txt_course.setText("");
+        spinner_director.setSelection(0);
     }
 
 }

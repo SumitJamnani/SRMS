@@ -26,7 +26,7 @@
 
         <LinearLayout
             android:layout_width="334dp"
-            android:layout_height="410dp"
+            android:layout_height="420dp"
             android:layout_marginTop="92dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -39,36 +39,57 @@
                 android:id="@+id/spinner_role"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="15dp"
-                />
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_course"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
 
             <EditText
                 android:id="@+id/txt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:ems="10"
-                android:hint="Enter Name"
-                android:layout_marginTop="30dp"
-                android:inputType="textPersonName" />
+                android:hint="Enter Full Name"
+                android:inputType="textCapWords" />
 
             <EditText
-                android:id="@+id/txt_pwd"
+                android:id="@+id/txt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:ems="10"
-                android:hint="Password"
-                android:layout_marginTop="30dp"
-                android:inputType="textPassword" />
+                android:hint="Enter Email"
+                android:inputType="textEmailAddress" />
 
-            <Button
-                android:id="@+id/btn_img_file"
-                android:layout_width="152dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:background="#9400BCD4"
-                android:drawableLeft="@drawable/ic_add_a_photo_black"
-                android:text="Upload Image" />
+                app:passwordToggleEnabled="true"
+                android:layout_marginTop="15dp">
+                <EditText
+                    android:id="@+id/txt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="#0D0C0C" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_img_file"-->
+<!--                android:layout_width="152dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:background="#9400BCD4"-->
+<!--                android:drawableLeft="@drawable/ic_add_a_photo_black"-->
+<!--                android:text="Upload Image"-->
+<!--                android:textColor="#ffffff" />-->
 
             <TextView
                 android:id="@+id/filename"
@@ -80,11 +101,11 @@
                 android:id="@+id/btn_UpdateProfile"
                 android:layout_width="131dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center"
-                android:hint="Update Profile"
-                android:textColorHint="#0B0B0B"
-                android:background="@drawable/rounded_button"/>
+                android:hint="UPDATE PROFILE"
+                android:textColorHint="#fff"
+                android:background="@drawable/rounded_button" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

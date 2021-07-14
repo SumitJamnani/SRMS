@@ -34,7 +34,7 @@
         <LinearLayout
             android:id="@+id/linearLayout_SubjectMgmt"
             android:layout_width="334dp"
-            android:layout_height="432dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="88dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -44,41 +44,127 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/txt_Subject"
+                android:id="@+id/txt_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
+                android:inputType="textCapWords"
                 android:ems="10"
                 android:hint="Enter SubjectName : Python" />
 
             <EditText
-                android:id="@+id/txt_SubjectCode"
+                android:id="@+id/txt_subjectcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
+                android:inputType="textCapWords"
                 android:ems="10"
                 android:hint="Enter SubjectCode : 619403" />
 
-            <Spinner
-                android:id="@+id/spinner_Course"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
-
-            <Spinner
-                android:id="@+id/spinner_Semester"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
-
-            <Button
-                android:id="@+id/btn_AddSubject"
-                android:layout_width="147dp"
+            <LinearLayout
+                android:id="@+id/linearLayout_RadioButtons"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_button"
-                android:text="Add Subject" />
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/subject_type_choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/regular_subject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Regular"
+                        android:textSize="15dp"
+                        android:checked="true" >
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/elective_subject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Elective"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp" >
+                    </RadioButton>
+                </RadioGroup>
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner_course"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="15dp" />
+
+            <Spinner
+                android:id="@+id/spinner_semester"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="15dp" />
+
+            <Spinner
+                android:id="@+id/spinner_batch"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="15dp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set1"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_AddData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button"
+                    android:text="Add"
+                    android:textColor="#ffffff" />
+                <Button
+                    android:id="@+id/btn_SearchData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Search"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_Button_set2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_UpdateData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="Update"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+
+                <Button
+                    android:id="@+id/btn_DeleteData"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Delete"
+                    android:textColor="#ffffff"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

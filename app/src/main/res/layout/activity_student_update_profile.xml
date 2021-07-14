@@ -26,7 +26,7 @@
 
         <LinearLayout
             android:layout_width="334dp"
-            android:layout_height="510dp"
+            android:layout_height="505dp"
             android:layout_marginTop="92dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -36,24 +36,50 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/txt_en"
+                android:id="@+id/txt_enrollment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="205350694034"
-                android:layout_marginTop="30dp"
-                android:inputType="none"
+                android:layout_marginTop="15dp"
+                android:inputType="number"
+                android:textColor="#808080"
                 android:textIsSelectable="true"
                 android:focusable="false" />
 
             <EditText
-                android:id="@+id/txt_class"
+                android:id="@+id/txt_course"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="MCA"
+                android:inputType="textNoSuggestions"
+                android:textColor="#808080"
+                android:textIsSelectable="true"
+                android:focusable="false" />
+
+            <EditText
+                android:id="@+id/txt_batch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="MCA Batch2 2021"
+                android:inputType="textNoSuggestions"
+                android:textColor="#808080"
+                android:textIsSelectable="true"
+                android:focusable="false" />
+
+            <EditText
+                android:id="@+id/txt_semester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="MCA Sem 2"
-                android:inputType="none"
+                android:inputType="textNoSuggestions"
+                android:textColor="#808080"
                 android:textIsSelectable="true"
                 android:focusable="false" />
 
@@ -63,39 +89,38 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Enter Name"
-                android:layout_marginTop="30dp"
-                android:inputType="textPersonName" />
+                android:layout_marginTop="10dp"
+                android:inputType="textCapWords" />
 
             <EditText
-                android:id="@+id/txt_pwd"
+                android:id="@+id/txt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="Password"
-                android:layout_marginTop="30dp"
-                android:inputType="textPassword" />
+                android:hint="Enter Email"
+                android:inputType="textEmailAddress" />
 
-            <Button
-                android:id="@+id/btn_img_file"
-                android:layout_width="152dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:background="#9400BCD4"
-                android:drawableLeft="@drawable/ic_add_a_photo_black"
-                android:text="Upload Image" />
-
-            <TextView
-                android:id="@+id/filename"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                app:passwordToggleEnabled="true"
+                android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/txt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="#0D0C0C" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_UpdateProfile"
                 android:layout_width="131dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="25dp"
                 android:layout_gravity="center"
                 android:hint="Update Profile"
                 android:textColorHint="#0B0B0B"

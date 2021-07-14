@@ -13,6 +13,66 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:id="@+id/linearLayout_Reports"
+            android:layout_width="334dp"
+            android:layout_height="450dp"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/rounded_border_registration"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Spinner
+                android:id="@+id/spinner_course"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_batch"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_semester"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_faculty"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_subject"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_exam"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:id="@+id/btn_Report"
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/rounded_button"
+                android:text="View Report"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/title_report"
             android:layout_width="wrap_content"
@@ -32,52 +92,245 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.014" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout_Reports"
-            android:layout_width="334dp"
-            android:layout_height="425dp"
-            android:layout_marginTop="75dp"
-            android:background="@drawable/rounded_border_registration"
-            android:orientation="vertical"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="24dp"
+            android:visibility="visible"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_Reports">
 
-            <Spinner
-                android:id="@+id/spinner_Course"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                android:layout_height="330dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card">
 
-            <Spinner
-                android:id="@+id/spinner_Semester"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
 
-            <Spinner
-                android:id="@+id/spinner_Faculty"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                <TableLayout
+                    android:id="@+id/tbl_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="74dp"
+                    android:layout_marginLeft="47dp">
 
-            <Spinner
-                android:id="@+id/spinner_Exam"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Exam   "
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btn_Report"
-                android:layout_width="147dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_button"
-                android:text="View Report" />
+                        <TextView
+                            android:id="@+id/txt_examname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="JWT Unit 1 "
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
 
-        </LinearLayout>
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Course   "
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_coursename"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:text="MCA"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Batch   "
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_batchname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:text="MCA Batch2 2021"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Semester   "
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_semestername"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:text="Semester 2"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Faculty   "
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_facultyname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:text="Tinal Parikh"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Subject   "
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_subjectname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:text="JWT"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Students Appeared   "
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_totstud"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:text="130"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Pass   "
+                            android:textColor="#FF4AD71B"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_pass_stud"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:text="100"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="Fail   "
+                            android:textColor="#FFEF2C2C"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_fail_stud"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:text="30"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_report" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

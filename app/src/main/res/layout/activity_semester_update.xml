@@ -34,7 +34,7 @@
         <LinearLayout
             android:id="@+id/linearLayout_SemesterUpdate"
             android:layout_width="334dp"
-            android:layout_height="362dp"
+            android:layout_height="332dp"
             android:layout_marginTop="108dp"
             android:background="@drawable/rounded_border_registration"
             android:orientation="vertical"
@@ -44,22 +44,22 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Spinner
-                android:id="@+id/spinner_Course"
+                android:id="@+id/spinner_course"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="20dp" />
 
             <Spinner
-                android:id="@+id/spinner_Semester"
+                android:id="@+id/spinner_batch"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="20dp" />
 
             <Spinner
-                android:id="@+id/spinner_NewSemester"
+                android:id="@+id/spinner_semester"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="20dp" />
 
             <Button
                 android:id="@+id/btn_UpdateSemester"
@@ -68,7 +68,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/rounded_button"
-                android:text="Update Semester" />
+                android:text="Update Semester"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
