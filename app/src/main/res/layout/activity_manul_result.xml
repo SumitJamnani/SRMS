@@ -20,7 +20,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Manual Result"
+            android:text="Result Management"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="25dp"

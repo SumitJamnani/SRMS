@@ -92,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Niayti Pathak"
+                    android:text="Niyati Pathak"
                     android:textAlignment="center"
                     android:textColor="#000"
                     android:textSize="25dp"

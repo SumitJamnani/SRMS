@@ -495,6 +495,34 @@ public class RegistrationActivity extends Fragment implements View.OnClickListen
                 values_login.put("email", txt_email.getText().toString());
                 values_login.put("password", txt_password.getText().toString());
                 values_reg.put("course_name", spinner_course.getSelectedItem().toString());
+
+                Query dir_name = db.getReference("course_m").orderByChild("course_name").equalTo(spinner_course.getSelectedItem().toString());
+                dir_name.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if(snapshot.exists())
+                        {
+                            Map<String,Object> course_name = new HashMap<String,Object>();
+                            course_name.put("director_name", txt_name.getText().toString());
+                            for (DataSnapshot data : snapshot.getChildren()) {
+                                db.getReference("course_m").child(data.getKey()).updateChildren(course_name).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(getActivity(), "Director Allocated To Course!!", Toast.LENGTH_LONG);
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull  DatabaseError error) {
+
+                    }
+                });
+
+
                 break;
 
             default :

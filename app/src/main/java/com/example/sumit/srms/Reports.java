@@ -64,25 +64,29 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
         txt_tot_stud = view.findViewById(R.id.txt_totstud);
         txt_pass_stud = view.findViewById(R.id.txt_pass_stud);
         txt_fail_stud = view.findViewById(R.id.txt_fail_stud);
-        spinner_course = view.findViewById(R.id.spinner_course);
         exam_name = view.findViewById(R.id.txt_examname);
         course_name = view.findViewById(R.id.txt_coursename);
         batch_name = view.findViewById(R.id.txt_batchname);
         faculty_name = view.findViewById(R.id.txt_facultyname);
         semester_name = view.findViewById(R.id.txt_semestername);
         subject_name = view.findViewById(R.id.txt_subjectname);
+        spinner_course = view.findViewById(R.id.spinner_course);
+        spinner_batch = view.findViewById(R.id.spinner_batch);
+        spinner_semester = view.findViewById(R.id.spinner_semester);
+        spinner_faculty = view.findViewById(R.id.spinner_faculty);
         spinner_subject = view.findViewById(R.id.spinner_subject);
         spinner_exam = view.findViewById(R.id.spinner_exam);
         report_container = (RecyclerView)  view.findViewById(R.id.recycler_report);
         report_container.setHasFixedSize(true);
         report_container.setLayoutManager(new LinearLayoutManager(getActivity()));
         report_card = view.findViewById(R.id.cardView_report);
-
         btn_report = view.findViewById(R.id.btn_Report);
 
         //Initialize setOnItemSelectedListener() Method For Spinner
+        spinner_course.setOnItemSelectedListener(this);
+        spinner_semester.setOnItemSelectedListener(this);
+        spinner_faculty.setOnItemSelectedListener(this);
         spinner_subject.setOnItemSelectedListener(this);
-        spinner_exam.setOnItemSelectedListener(this);
 
         //Fill Spinner With Database Values
         fill_spinner();
@@ -158,8 +162,7 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
     {
         switch (parent.getId())
         {
-            case R.id.spinner_course:
-            {
+            case R.id.spinner_course: {
                 //Spinner Course -> Spinner Batch
                 if (spinner_course.getSelectedItemPosition() != 0) {
                     Query batch_spinner_query = db.getReference("batch_m").orderByChild("course_name").equalTo(spinner_course.getSelectedItem().toString());
@@ -199,49 +202,49 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
                     adapter_batch.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner_batch.setAdapter(adapter_batch);
                 }
-            }
 
-            //Spinner Course -> Spinner Semester
-            if (spinner_course.getSelectedItemPosition() != 0) {
-                Query semester_spinner_query = db.getReference("semester_m").orderByChild("course_name").equalTo(spinner_course.getSelectedItem().toString());
-                semester_spinner_query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            semester_array.clear();
-                            semester_array.add("-- Select Semester --");
-                            for (DataSnapshot data : snapshot.getChildren()) {
-                                semester_array.add(data.child("semester_name").getValue().toString());
+                //Spinner Course -> Spinner Semester
+                if (spinner_course.getSelectedItemPosition() != 0) {
+                    Query semester_spinner_query = db.getReference("semester_m").orderByChild("course_name").equalTo(spinner_course.getSelectedItem().toString());
+                    semester_spinner_query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                semester_array.clear();
+                                semester_array.add("-- Select Semester --");
+                                for (DataSnapshot data : snapshot.getChildren()) {
+                                    semester_array.add(data.child("semester_name").getValue().toString());
+                                }
+                                if (semester_array.size() == 1) {
+                                    Toast.makeText(getActivity(), "Error : Semester Records Not Found For Selected Course!!", Toast.LENGTH_SHORT).show();
+                                }
+                                adapter_semester.notifyDataSetChanged();
+                                spinner_semester.setAdapter(adapter_semester);
+                            } else {
+                                semester_array.clear();
+                                semester_array.add("-- Select Semester --");
+                                adapter_semester.notifyDataSetChanged();
+                                spinner_semester.setAdapter(adapter_semester);
                             }
-                            if (semester_array.size() == 1) {
-                                Toast.makeText(getActivity(), "Error : Semester Records Not Found For Selected Course!!", Toast.LENGTH_SHORT).show();
-                            }
-                            adapter_semester.notifyDataSetChanged();
-                            spinner_semester.setAdapter(adapter_semester);
-                        } else {
-                            semester_array.clear();
-                            semester_array.add("-- Select Semester --");
-                            adapter_semester.notifyDataSetChanged();
-                            spinner_semester.setAdapter(adapter_semester);
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getActivity(), "Error : Something Went Wrong While Fetching Record!!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } else {
-                //Initialize Spinner Semester
-                semester_array = new ArrayList<String>();
-                semester_array.add("-- Select Semester --");
-                adapter_semester = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, semester_array);
-                adapter_semester.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner_semester.setAdapter(adapter_semester);
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(getActivity(), "Error : Something Went Wrong While Fetching Record!!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    //Initialize Spinner Semester
+                    semester_array = new ArrayList<String>();
+                    semester_array.add("-- Select Semester --");
+                    adapter_semester = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, semester_array);
+                    adapter_semester.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner_semester.setAdapter(adapter_semester);
+                }
+                break;
             }
-            break;
 
-            case R.id.spinner_semester:
+            case R.id.spinner_semester: {
                 //Spinner Semester -> Spinner Faculty
                 if (spinner_semester.getSelectedItemPosition() != 0) {
                     Query faculty_spinner_query = db.getReference("faculty_m").orderByChild("semester_name").equalTo(spinner_semester.getSelectedItem().toString());
@@ -251,9 +254,8 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
                             if (snapshot.exists()) {
                                 faculty_array.clear();
                                 faculty_array.add("-- Select Faculty --");
-                                for (DataSnapshot data : snapshot.getChildren())
-                                {
-                                    if(data.child("course_name").getValue().toString().equals(spinner_course.getSelectedItem().toString()) && data.child("batch_name").getValue().toString().equals(spinner_batch.getSelectedItem().toString()))
+                                for (DataSnapshot data : snapshot.getChildren()) {
+                                    if (data.child("course_name").getValue().toString().equals(spinner_course.getSelectedItem().toString()) && data.child("batch_name").getValue().toString().equals(spinner_batch.getSelectedItem().toString()))
                                         faculty_array.add(data.child("faculty_name").getValue().toString());
                                 }
                                 if (faculty_array.size() == 1) {
@@ -284,8 +286,9 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
                     spinner_faculty.setAdapter(adapter_faculty);
                 }
                 break;
+            }
 
-            case R.id.spinner_faculty:
+            case R.id.spinner_faculty: {
                 //Spinner Faculty -> Spinner Subject
                 if (spinner_faculty.getSelectedItemPosition() != 0) {
                     Query subject_spinner_query = db.getReference("faculty_m").orderByChild("faculty_name").equalTo(spinner_faculty.getSelectedItem().toString());
@@ -295,9 +298,8 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
                             if (snapshot.exists()) {
                                 subject_array.clear();
                                 subject_array.add("-- Select Subject --");
-                                for (DataSnapshot data : snapshot.getChildren())
-                                {
-                                    if(data.child("course_name").getValue().toString().equals(spinner_course.getSelectedItem().toString()) && data.child("batch_name").getValue().toString().equals(spinner_batch.getSelectedItem().toString()) && data.child("faculty_name").getValue().toString().equals(spinner_faculty.getSelectedItem().toString()))
+                                for (DataSnapshot data : snapshot.getChildren()) {
+                                    if (data.child("course_name").getValue().toString().equals(spinner_course.getSelectedItem().toString()) && data.child("batch_name").getValue().toString().equals(spinner_batch.getSelectedItem().toString()) && data.child("faculty_name").getValue().toString().equals(spinner_faculty.getSelectedItem().toString()))
                                         subject_array.add(data.child("subject_name").getValue().toString());
                                 }
                                 if (subject_array.size() == 1) {
@@ -328,33 +330,28 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
                     spinner_subject.setAdapter(adapter_subject);
                 }
                 break;
+            }
 
-            case R.id.spinner_subject:
+            case R.id.spinner_subject: {
                 //Spinner Subject -> Spinner Exams
                 if (spinner_subject.getSelectedItemPosition() != 0) {
                     Query exam_spinner_query = db.getReference("faculty_m").orderByChild("subject_name").equalTo(spinner_subject.getSelectedItem().toString());
                     exam_spinner_query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists())
-                            {
+                            if (snapshot.exists()) {
                                 exam_array.clear();
                                 exam_array.add("-- Select Exam --");
-                                for (DataSnapshot data : snapshot.getChildren())
-                                {
-                                    if(data.child("course_name").getValue().toString().equals(spinner_course.getSelectedItem().toString()) && data.child("batch_name").getValue().toString().equals(spinner_batch.getSelectedItem().toString()) && data.child("faculty_name").getValue().toString().equals(spinner_faculty.getSelectedItem().toString()) && data.child("subject_name").getValue().toString().equals(spinner_subject.getSelectedItem().toString()))
-                                    {
+                                for (DataSnapshot data : snapshot.getChildren()) {
+                                    if (data.child("course_name").getValue().toString().equals(spinner_course.getSelectedItem().toString()) && data.child("batch_name").getValue().toString().equals(spinner_batch.getSelectedItem().toString()) && data.child("faculty_name").getValue().toString().equals(spinner_faculty.getSelectedItem().toString()) && data.child("subject_name").getValue().toString().equals(spinner_subject.getSelectedItem().toString())) {
                                         Query examname_spinner_query = db.getReference("exam_m").orderByChild("subject_name").equalTo(spinner_subject.getSelectedItem().toString());
                                         examname_spinner_query.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot)
-                                            {
-                                                if (snapshot.exists())
-                                                {
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                if (snapshot.exists()) {
                                                     exam_array.clear();
                                                     exam_array.add("-- Select Exam --");
-                                                    for (DataSnapshot data : snapshot.getChildren())
-                                                    {
+                                                    for (DataSnapshot data : snapshot.getChildren()) {
                                                         exam_array.add(data.child("exam_name").getValue().toString());
                                                     }
                                                 }
@@ -385,9 +382,7 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
                             Toast.makeText(getActivity(), "Error : Something Went Wrong While Fetching Record!!", Toast.LENGTH_SHORT).show();
                         }
                     });
-                }
-                else
-                {
+                } else {
                     //Initialize Spinner Exam
                     exam_array = new ArrayList<String>();
                     exam_array.add("-- Select Exam --");
@@ -396,6 +391,7 @@ public class Reports extends Fragment implements AdapterView.OnItemSelectedListe
                     spinner_exam.setAdapter(adapter_exam);
                 }
                 break;
+            }
         }
     }
     @Override
