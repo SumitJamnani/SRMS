@@ -1,1 +1,1 @@
-SRMS - Student Results Management System - Adndroid Project
+SRMS - Student Results Management System - Android Project
